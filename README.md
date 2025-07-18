@@ -4,9 +4,9 @@
 須藤技術士事務所（情報工学部門）の公式ホームページです。
 
 ## 技術スタック
-- **バックエンド**: Spring Boot 3.x + Java 17
+- **バックエンド**: Spring Boot 3.x + Java 17 + Gradle
 - **データベース**: PostgreSQL 15
-- **フロントエンド**: React 18 + Next.js 14
+- **フロントエンド**: React 18 + Vite + TypeScript
 - **コンテナ化**: Docker + Docker Compose
 - **デプロイ**: WordPress.com (https://kensudo.jp)
 
@@ -14,7 +14,7 @@
 ```
 it_consultant/
 ├── backend/                 # Spring Boot アプリケーション
-├── frontend/               # Next.js アプリケーション
+├── frontend/               # Vite React アプリケーション
 ├── docker/                 # Docker 設定ファイル
 ├── database/              # PostgreSQL 初期化スクリプト
 └── docs/                  # ドキュメント
@@ -36,7 +36,7 @@ docker-compose up -d
 ```bash
 # バックエンド起動
 cd backend
-./mvnw spring-boot:run
+./gradlew bootRun
 
 # フロントエンド起動
 cd frontend
@@ -45,7 +45,7 @@ npm run dev
 ```
 
 ### 3. アクセス
-- フロントエンド: http://localhost:3000
+- フロントエンド: http://localhost:80
 - バックエンドAPI: http://localhost:8080
 - データベース: localhost:5432
 
