@@ -1,126 +1,236 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
+import { ArrowRight, CheckCircle, Zap, Users, Star, Award, Clock, Shield } from 'lucide-react';
+import toast from 'react-hot-toast';
 
 export default function Hero() {
   const [isVisible, setIsVisible] = useState(false);
+  const { scrollY } = useScroll();
+  const y = useTransform(scrollY, [0, 300], [0, -100]);
+  const opacity = useTransform(scrollY, [0, 300], [1, 0]);
 
   useEffect(() => {
     setIsVisible(true);
   }, []);
 
+  const handleContactClick = () => {
+    const element = document.querySelector('#contact');
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+      toast.success('お問い合わせフォームに移動しました');
+    }
+  };
+
+  const handleServicesClick = () => {
+    const element = document.querySelector('#services');
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+      toast.success('サービス詳細に移動しました');
+    }
+  };
+
+  const features = [
+    {
+      icon: <Award className="w-5 h-5" />,
+      title: '技術士資格',
+      description: '情報工学部門の技術士として、高度な技術力と豊富な経験を提供',
+      color: 'blue'
+    },
+    {
+      icon: <Zap className="w-5 h-5" />,
+      title: '迅速対応',
+      description: 'お客様のニーズに迅速かつ柔軟に対応し、最適なソリューションを提案',
+      color: 'green'
+    },
+    {
+      icon: <Users className="w-5 h-5" />,
+      title: '継続サポート',
+      description: 'システム導入後も継続的なサポートとメンテナンスで安心を提供',
+      color: 'purple'
+    }
+  ];
+
+  const stats = [
+    { number: '15+', label: '年の経験', icon: <Clock className="w-4 h-4" /> },
+    { number: '100+', label: 'プロジェクト', icon: <CheckCircle className="w-4 h-4" /> },
+    { number: '50+', label: 'お客様', icon: <Users className="w-4 h-4" /> },
+    { number: '99%', label: '満足度', icon: <Star className="w-4 h-4" /> }
+  ];
+
   return (
-    <section id="home" className="min-h-screen flex items-center bg-white">
-      <div className="container-max section-padding">
-        <div className="max-w-4xl">
-          {/* ロゴ・タイトル */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 30 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-            className="mb-8"
-          >
-            <div className="inline-flex items-center space-x-4 mb-6">
-              <div className="w-16 h-16 bg-blue-600 rounded-lg flex items-center justify-center shadow-md">
-                <span className="text-white text-2xl font-bold"></span>
-              </div>
-              <div>
-                <h1 className="text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
-                  須藤技術士事務所
-                </h1>
-                <p className="text-xl lg:text-2xl text-blue-600 font-medium mt-1">
-                  情報工学部門
-                </p>
-              </div>
-            </div>
-          </motion.div>
+    <section id="home" className="relative min-h-screen flex items-center bg-gradient-to-br from-blue-50 via-white to-indigo-50 overflow-hidden">
+      {/* 背景アニメーション */}
+      <motion.div
+        className="absolute inset-0 opacity-10"
+        style={{ y, opacity }}
+      >
+        <div className="absolute top-20 left-10 w-72 h-72 bg-blue-400 rounded-full mix-blend-multiply filter blur-xl animate-float"></div>
+        <div className="absolute top-40 right-10 w-72 h-72 bg-purple-400 rounded-full mix-blend-multiply filter blur-xl animate-float" style={{ animationDelay: '2s' }}></div>
+        <div className="absolute -bottom-8 left-20 w-72 h-72 bg-pink-400 rounded-full mix-blend-multiply filter blur-xl animate-float" style={{ animationDelay: '4s' }}></div>
+      </motion.div>
 
-          {/* サブタイトル */}
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 20 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-lg lg:text-xl text-gray-600 leading-relaxed mb-8 max-w-2xl"
-          >
-            情報工学部門の技術士として、システム設計・開発・コンサルティングを通じて、
-            お客様のビジネス課題を技術的視点から解決いたします。
-          </motion.p>
-
-          {/* CTAボタン */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 20 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            className="flex flex-col sm:flex-row gap-4 mb-12"
-          >
-            <a
-              href="#contact"
-              className="inline-flex items-center justify-center px-8 py-4 bg-blue-600 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 transition-colors duration-200"
-              aria-label="お問い合わせフォームへ移動"
+      <div className="container-max section-padding relative z-10">
+        <div className="max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            {/* 左側: メインコンテンツ */}
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              animate={{ opacity: isVisible ? 1 : 0, x: isVisible ? 0 : -50 }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
             >
-              お問い合わせ
-            </a>
-            <a
-              href="#services"
-              className="inline-flex items-center justify-center px-8 py-4 border-2 border-blue-600 text-blue-600 font-semibold rounded-lg hover:bg-blue-600 hover:text-white transition-colors duration-200"
-              aria-label="サービス紹介へ移動"
+              {/* ロゴ・タイトル */}
+              <motion.div
+                className="mb-8"
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 30 }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+              >
+                <div className="inline-flex items-center space-x-4 mb-6">
+                  <motion.div 
+                    className="w-20 h-20 bg-gradient-to-br from-blue-600 to-indigo-700 rounded-2xl flex items-center justify-center shadow-lg"
+                    whileHover={{ scale: 1.05, rotate: 5 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    <span className="text-white text-3xl font-bold">須</span>
+                  </motion.div>
+                  <div>
+                    <h1 className="text-5xl lg:text-6xl font-bold text-gradient leading-tight">
+                      須藤技術士事務所
+                    </h1>
+                    <p className="text-xl lg:text-2xl text-blue-600 font-medium mt-2">
+                      情報工学部門
+                    </p>
+                  </div>
+                </div>
+              </motion.div>
+
+              {/* サブタイトル */}
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 20 }}
+                transition={{ duration: 0.6, delay: 0.4 }}
+                className="text-xl lg:text-2xl text-gray-600 leading-relaxed mb-8"
+              >
+                情報工学部門の技術士として、システム設計・開発・コンサルティングを通じて、
+                お客様のビジネス課題を技術的視点から解決いたします。
+              </motion.p>
+
+              {/* CTAボタン */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 20 }}
+                transition={{ duration: 0.6, delay: 0.6 }}
+                className="flex flex-col sm:flex-row gap-4 mb-12"
+              >
+                <motion.button
+                  onClick={handleContactClick}
+                  className="group inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
+                  whileHover={{ scale: 1.05, y: -2 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  お問い合わせ
+                  <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform duration-200" />
+                </motion.button>
+                <motion.button
+                  onClick={handleServicesClick}
+                  className="group inline-flex items-center justify-center px-8 py-4 border-2 border-blue-600 text-blue-600 font-semibold rounded-xl hover:bg-blue-600 hover:text-white transition-all duration-300"
+                  whileHover={{ scale: 1.05, y: -2 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  サービス詳細
+                  <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform duration-200" />
+                </motion.button>
+              </motion.div>
+
+              {/* 統計情報 */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 20 }}
+                transition={{ duration: 0.6, delay: 0.8 }}
+                className="grid grid-cols-2 sm:grid-cols-4 gap-6 mb-12"
+              >
+                {stats.map((stat, index) => (
+                  <motion.div
+                    key={stat.label}
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: isVisible ? 1 : 0, scale: isVisible ? 1 : 0.8 }}
+                    transition={{ duration: 0.6, delay: 1 + index * 0.1 }}
+                    className="text-center"
+                  >
+                    <div className="flex items-center justify-center space-x-2 mb-2">
+                      <div className="text-blue-600">{stat.icon}</div>
+                      <div className="text-2xl lg:text-3xl font-bold text-gray-900">{stat.number}</div>
+                    </div>
+                    <p className="text-sm text-gray-600">{stat.label}</p>
+                  </motion.div>
+                ))}
+              </motion.div>
+            </motion.div>
+
+            {/* 右側: 特徴カード */}
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              animate={{ opacity: isVisible ? 1 : 0, x: isVisible ? 0 : 50 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              className="space-y-6"
             >
-              サービス詳細
-            </a>
-          </motion.div>
-
-          {/* 特徴 */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 20 }}
-            transition={{ duration: 0.6, delay: 0.6 }}
-            className="grid grid-cols-1 sm:grid-cols-3 gap-6"
-          >
-            <div className="flex items-start space-x-3">
-              <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                <svg className="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-              </div>
-              <div>
-                <h3 className="font-semibold text-gray-900 mb-1">技術士資格</h3>
-                <p className="text-sm text-gray-600">
-                  情報工学部門の技術士として、高度な技術力と豊富な経験を提供
-                </p>
-              </div>
-            </div>
-
-            <div className="flex items-start space-x-3">
-              <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                <svg className="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                </svg>
-              </div>
-              <div>
-                <h3 className="font-semibold text-gray-900 mb-1">迅速対応</h3>
-                <p className="text-sm text-gray-600">
-                  お客様のニーズに迅速かつ柔軟に対応し、最適なソリューションを提案
-                </p>
-              </div>
-            </div>
-
-            <div className="flex items-start space-x-3">
-              <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                <svg className="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-                </svg>
-              </div>
-              <div>
-                <h3 className="font-semibold text-gray-900 mb-1">継続サポート</h3>
-                <p className="text-sm text-gray-600">
-                  システム導入後も継続的なサポートとメンテナンスで安心を提供
-                </p>
-              </div>
-            </div>
-          </motion.div>
+              {features.map((feature, index) => (
+                <motion.div
+                  key={feature.title}
+                  initial={{ opacity: 0, x: 50 }}
+                  animate={{ opacity: isVisible ? 1 : 0, x: isVisible ? 0 : 50 }}
+                  transition={{ duration: 0.6, delay: 0.6 + index * 0.2 }}
+                  className="group"
+                >
+                  <motion.div
+                    className="bg-white/80 backdrop-blur-sm border border-gray-200 rounded-2xl p-6 shadow-soft hover:shadow-lg transition-all duration-300"
+                    whileHover={{ scale: 1.02, y: -4 }}
+                  >
+                    <div className="flex items-start space-x-4">
+                      <motion.div
+                        className={`w-12 h-12 bg-gradient-to-br from-${feature.color}-500 to-${feature.color}-600 rounded-xl flex items-center justify-center text-white shadow-lg`}
+                        whileHover={{ scale: 1.1, rotate: 5 }}
+                      >
+                        {feature.icon}
+                      </motion.div>
+                      <div className="flex-1">
+                        <h3 className="text-lg font-semibold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors duration-300">
+                          {feature.title}
+                        </h3>
+                        <p className="text-gray-600 leading-relaxed">
+                          {feature.description}
+                        </p>
+                      </div>
+                    </div>
+                  </motion.div>
+                </motion.div>
+              ))}
+            </motion.div>
+          </div>
         </div>
       </div>
+
+      {/* スクロールインジケーター */}
+      <motion.div
+        className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 20 }}
+        transition={{ duration: 0.6, delay: 1.2 }}
+      >
+        <motion.div
+          className="w-6 h-10 border-2 border-gray-400 rounded-full flex justify-center"
+          animate={{ y: [0, 10, 0] }}
+          transition={{ duration: 2, repeat: Infinity }}
+        >
+          <motion.div
+            className="w-1 h-3 bg-gray-400 rounded-full mt-2"
+            animate={{ y: [0, 10, 0] }}
+            transition={{ duration: 2, repeat: Infinity }}
+          />
+        </motion.div>
+      </motion.div>
     </section>
   );
 } 

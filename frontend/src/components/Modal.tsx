@@ -1,0 +1,202 @@
+import { motion, AnimatePresence } from 'framer-motion';
+import { X, AlertCircle, CheckCircle, Info, AlertTriangle } from 'lucide-react';
+import { useEffect } from 'react';
+
+interface ModalProps {
+  isOpen: boolean;
+  onClose: () => void;
+  title: string;
+  children: React.ReactNode;
+  type?: 'default' | 'success' | 'error' | 'warning' | 'info';
+  size?: 'sm' | 'md' | 'lg' | 'xl';
+  showCloseButton?: boolean;
+  closeOnOverlayClick?: boolean;
+  closeOnEscape?: boolean;
+}
+
+export default function Modal({
+  isOpen,
+  onClose,
+  title,
+  children,
+  type = 'default',
+  size = 'md',
+  showCloseButton = true,
+  closeOnOverlayClick = true,
+  closeOnEscape = true
+}: ModalProps) {
+  const sizeClasses = {
+    sm: 'max-w-md',
+    md: 'max-w-lg',
+    lg: 'max-w-2xl',
+    xl: 'max-w-4xl'
+  };
+
+  const typeIcons = {
+    default: null,
+    success: <CheckCircle className="w-6 h-6 text-green-500" />,
+    error: <AlertCircle className="w-6 h-6 text-red-500" />,
+    warning: <AlertTriangle className="w-6 h-6 text-yellow-500" />,
+    info: <Info className="w-6 h-6 text-blue-500" />
+  };
+
+  const typeColors = {
+    default: 'border-gray-200',
+    success: 'border-green-200',
+    error: 'border-red-200',
+    warning: 'border-yellow-200',
+    info: 'border-blue-200'
+  };
+
+  // ESCキーでモーダルを閉じる
+  useEffect(() => {
+    if (!closeOnEscape) return;
+
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        onClose();
+      }
+    };
+
+    if (isOpen) {
+      document.addEventListener('keydown', handleEscape);
+      // スクロールを無効化
+      document.body.style.overflow = 'hidden';
+    }
+
+    return () => {
+      document.removeEventListener('keydown', handleEscape);
+      document.body.style.overflow = 'unset';
+    };
+  }, [isOpen, onClose, closeOnEscape]);
+
+  return (
+    <AnimatePresence>
+      {isOpen && (
+        <motion.div
+          className="fixed inset-0 z-50 flex items-center justify-center p-4"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.2 }}
+        >
+          {/* オーバーレイ */}
+          <motion.div
+            className="absolute inset-0 bg-black/50 backdrop-blur-sm"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={closeOnOverlayClick ? onClose : undefined}
+          />
+
+          {/* モーダルコンテンツ */}
+          <motion.div
+            className={`relative w-full ${sizeClasses[size]} bg-white rounded-2xl shadow-2xl border ${typeColors[type]} overflow-hidden`}
+            initial={{ 
+              opacity: 0, 
+              scale: 0.9, 
+              y: 20 
+            }}
+            animate={{ 
+              opacity: 1, 
+              scale: 1, 
+              y: 0 
+            }}
+            exit={{ 
+              opacity: 0, 
+              scale: 0.9, 
+              y: 20 
+            }}
+            transition={{ 
+              type: "spring",
+              damping: 25,
+              stiffness: 300
+            }}
+          >
+            {/* ヘッダー */}
+            <div className="flex items-center justify-between p-6 border-b border-gray-100">
+              <div className="flex items-center space-x-3">
+                {typeIcons[type]}
+                <h2 className="text-xl font-semibold text-gray-900">
+                  {title}
+                </h2>
+              </div>
+              
+              {showCloseButton && (
+                <motion.button
+                  onClick={onClose}
+                  className="p-2 text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded-lg transition-all duration-200"
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
+                >
+                  <X className="w-5 h-5" />
+                </motion.button>
+              )}
+            </div>
+
+            {/* コンテンツ */}
+            <div className="p-6">
+              {children}
+            </div>
+          </motion.div>
+        </motion.div>
+      )}
+    </AnimatePresence>
+  );
+}
+
+// モーダル用のフッターコンポーネント
+interface ModalFooterProps {
+  children: React.ReactNode;
+  className?: string;
+}
+
+export function ModalFooter({ children, className = '' }: ModalFooterProps) {
+  return (
+    <div className={`flex items-center justify-end space-x-3 pt-6 border-t border-gray-100 ${className}`}>
+      {children}
+    </div>
+  );
+}
+
+// モーダル用のボタンコンポーネント
+interface ModalButtonProps {
+  children: React.ReactNode;
+  onClick?: () => void;
+  variant?: 'primary' | 'secondary' | 'danger';
+  disabled?: boolean;
+  loading?: boolean;
+}
+
+export function ModalButton({ 
+  children, 
+  onClick, 
+  variant = 'primary',
+  disabled = false,
+  loading = false
+}: ModalButtonProps) {
+  const variants = {
+    primary: 'bg-blue-600 hover:bg-blue-700 text-white',
+    secondary: 'bg-gray-200 hover:bg-gray-300 text-gray-900',
+    danger: 'bg-red-600 hover:bg-red-700 text-white'
+  };
+
+  return (
+    <motion.button
+      onClick={onClick}
+      disabled={disabled || loading}
+      className={`px-4 py-2 rounded-lg font-medium transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed ${variants[variant]}`}
+      whileHover={{ scale: disabled || loading ? 1 : 1.02 }}
+      whileTap={{ scale: disabled || loading ? 1 : 0.98 }}
+    >
+      {loading ? (
+        <div className="flex items-center space-x-2">
+          <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
+          <span>読み込み中...</span>
+        </div>
+      ) : (
+        children
+      )}
+    </motion.button>
+  );
+} 

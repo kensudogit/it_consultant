@@ -106,6 +106,10 @@ export default {
         'soft': '0 2px 15px -3px rgba(0, 0, 0, 0.07), 0 10px 20px -2px rgba(0, 0, 0, 0.04)',
         'glow': '0 0 20px rgba(59, 130, 246, 0.3)',
         'glow-lg': '0 0 40px rgba(59, 130, 246, 0.4)',
+        'glass': '0 8px 32px 0 rgba(31, 38, 135, 0.37)',
+        'glass-strong': '0 8px 32px 0 rgba(31, 38, 135, 0.5)',
+        'nav': '0 4px 20px rgba(0, 0, 0, 0.1)',
+        'nav-strong': '0 8px 32px rgba(0, 0, 0, 0.15)',
       },
       animation: {
         'fade-in': 'fadeIn 0.6s ease-in-out',
@@ -114,6 +118,10 @@ export default {
         'bounce-slow': 'bounce 2s infinite',
         'pulse-slow': 'pulse 3s infinite',
         'float': 'float 6s ease-in-out infinite',
+        'slide-in-right': 'slideInRight 0.3s ease-out',
+        'slide-in-left': 'slideInLeft 0.3s ease-out',
+        'scale-in': 'scaleIn 0.2s ease-out',
+        'rotate-in': 'rotateIn 0.3s ease-out',
       },
       keyframes: {
         fadeIn: {
@@ -132,11 +140,29 @@ export default {
           '0%, 100%': { transform: 'translateY(0px)' },
           '50%': { transform: 'translateY(-20px)' },
         },
+        slideInRight: {
+          '0%': { transform: 'translateX(100%)' },
+          '100%': { transform: 'translateX(0)' },
+        },
+        slideInLeft: {
+          '0%': { transform: 'translateX(-100%)' },
+          '100%': { transform: 'translateX(0)' },
+        },
+        scaleIn: {
+          '0%': { transform: 'scale(0.9)', opacity: '0' },
+          '100%': { transform: 'scale(1)', opacity: '1' },
+        },
+        rotateIn: {
+          '0%': { transform: 'rotate(-10deg)', opacity: '0' },
+          '100%': { transform: 'rotate(0deg)', opacity: '1' },
+        },
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
         'pattern-dots': 'radial-gradient(circle at 1px 1px, #3b82f6 1px, transparent 0)',
+        'gradient-mesh': 'linear-gradient(45deg, #667eea 0%, #764ba2 100%)',
+        'gradient-sunset': 'linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%)',
       },
       backgroundSize: {
         'pattern': '40px 40px',
@@ -144,7 +170,70 @@ export default {
       backdropBlur: {
         xs: '2px',
       },
+      // UI/UXツール用のカスタムユーティリティ
+      container: {
+        center: true,
+        padding: {
+          DEFAULT: '1rem',
+          sm: '2rem',
+          lg: '4rem',
+          xl: '5rem',
+          '2xl': '6rem',
+        },
+      },
     },
   },
-  plugins: [],
+  plugins: [
+    // カスタムプラグイン
+    function({ addUtilities, theme }) {
+      const newUtilities = {
+        '.container-max': {
+          maxWidth: '1440px',
+          margin: '0 auto',
+          padding: '0 1rem',
+          '@screen sm': {
+            padding: '0 2rem',
+          },
+          '@screen lg': {
+            padding: '0 4rem',
+          },
+          '@screen xl': {
+            padding: '0 5rem',
+          },
+        },
+        '.glass': {
+          background: 'rgba(255, 255, 255, 0.25)',
+          backdropFilter: 'blur(10px)',
+          border: '1px solid rgba(255, 255, 255, 0.18)',
+        },
+        '.glass-dark': {
+          background: 'rgba(0, 0, 0, 0.25)',
+          backdropFilter: 'blur(10px)',
+          border: '1px solid rgba(255, 255, 255, 0.18)',
+        },
+        '.text-gradient': {
+          background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+          '-webkit-background-clip': 'text',
+          '-webkit-text-fill-color': 'transparent',
+          'background-clip': 'text',
+        },
+        '.hover-lift': {
+          transition: 'all 0.3s ease',
+          '&:hover': {
+            transform: 'translateY(-4px)',
+            boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
+          },
+        },
+        '.focus-ring': {
+          '&:focus': {
+            outline: 'none',
+            ring: '2px',
+            'ring-color': theme('colors.blue.500'),
+            'ring-offset': '2px',
+          },
+        },
+      }
+      addUtilities(newUtilities)
+    }
+  ],
 } 
