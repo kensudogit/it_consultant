@@ -36,6 +36,6 @@ public interface ContactRepository extends JpaRepository<Contact, Long> {
     long countByStatus(Contact.ContactStatus status);
 
     // 今日のお問い合わせ件数を取得
-    @Query("SELECT COUNT(c) FROM Contact c WHERE DATE(c.createdAt) = CURRENT_DATE")
+    @Query("SELECT COUNT(c) FROM Contact c WHERE CAST(c.createdAt AS date) = CURRENT_DATE")
     long countTodayContacts();
 } 

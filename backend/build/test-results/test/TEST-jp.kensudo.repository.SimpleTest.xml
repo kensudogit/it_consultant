@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="jp.kensudo.repository.SimpleTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2025-07-18T22:54:50.031Z" hostname="A8" time="0.03">
+  <properties/>
+  <testcase name="simpleTest()" classname="jp.kensudo.repository.SimpleTest" time="0.03"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

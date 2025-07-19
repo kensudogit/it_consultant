@@ -1,0 +1,97 @@
+{
+    "java.test.config": {
+        "vmargs": [
+            "-ea",
+            "-Dspring.profiles.active=test"
+        ]
+    },
+    "java.test.defaultConfig": "default",
+    "java.test.editor.enableShortcuts": true,
+    "java.test.reuseLauncher": false,
+    "java.test.configs": [
+        {
+            "name": "ContactRepositoryTest",
+            "workingDirectory": "${workspaceFolder}",
+            "vmargs": [
+                "-ea",
+                "-Dspring.profiles.active=test"
+            ],
+            "env": {
+                "SPRING_PROFILES_ACTIVE": "test"
+            }
+        },
+        {
+            "name": "BlogPostRepositoryTest",
+            "workingDirectory": "${workspaceFolder}",
+            "vmargs": [
+                "-ea",
+                "-Dspring.profiles.active=test"
+            ],
+            "env": {
+                "SPRING_PROFILES_ACTIVE": "test"
+            }
+        }
+    ],
+    "java.compile.nullAnalysis.mode": "automatic",
+    "java.saveActions.organizeImports": true,
+    "java.format.settings.url": "https://raw.githubusercontent.com/google/styleguide/gh-pages/eclipse-java-google-style.xml",
+    "java.format.settings.profile": "GoogleStyle",
+    "java.test.additionalVmArgs": [
+        "-Dspring.profiles.active=test"
+    ],
+    "java.debug.settings.hotCodeReplace": "auto",
+    "java.debug.settings.enableRunDebugCodeLens": true,
+    "java.debug.settings.enableDebugMode": true,
+    "java.project.sourcePaths": [
+        "src/main/java",
+        "src/test/java"
+    ],
+    "java.project.outputPath": "build/classes",
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar"
+    ],
+    "java.dependency.packagePresentation": "hierarchical",
+    "java.dependency.syncWithFolderExplorer": true,
+    "java.completion.enabled": true,
+    "java.completion.guessMethodArguments": true,
+    "java.completion.importOrder": [
+        "java",
+        "javax",
+        "org",
+        "com"
+    ],
+    "java.codeGeneration.hashCodeEquals.useJava7Objects": true,
+    "java.codeGeneration.useBlocks": true,
+    "java.codeGeneration.generateComments": true,
+    "java.maven.downloadSources": true,
+    "java.maven.updateSnapshots": true,
+    "java.signatureHelp.enabled": true,
+    "java.contentProvider.preferred": "fernflower",
+    "java.maxConcurrentBuilds": 1,
+    "java.autobuild.enabled": true,
+    "java.cleanup.actionsOnSave": [
+        "qualifyStaticMembers",
+        "qualifyMembers",
+        "addOverride",
+        "addDeprecated",
+        "stringConcatenation",
+        "unnecessaryThis",
+        "unnecessaryNlsTag",
+        "unnecessaryCast",
+        "unnecessaryElse",
+        "suppressAnnotation",
+        "suppressWarnings",
+        "removeUnnecessaryCast",
+        "removeUnusedImports",
+        "removeUnusedPrivateMembers",
+        "removeUnusedPrivateMethods",
+        "removeUnusedPrivateFields",
+        "removeUnusedLocalVariables",
+        "removeUnusedPrivateTypes",
+        "removeUnusedPrivateConstructors",
+        "removeUnusedPrivateMethods",
+        "removeUnusedPrivateFields",
+        "removeUnusedPrivateTypes",
+        "removeUnusedPrivateConstructors"
+    ]
+} 

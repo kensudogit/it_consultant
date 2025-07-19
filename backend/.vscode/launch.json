@@ -1,0 +1,52 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "ContactRepositoryTest",
+            "request": "launch",
+            "mainClass": "jp.kensudo.repository.ContactRepositoryTest",
+            "projectName": "backend",
+            "env": {
+                "SPRING_PROFILES_ACTIVE": "test"
+            },
+            "args": [],
+            "vmArgs": [
+                "-ea"
+            ]
+        },
+        {
+            "type": "java",
+            "name": "BlogPostRepositoryTest",
+            "request": "launch",
+            "mainClass": "jp.kensudo.repository.BlogPostRepositoryTest",
+            "projectName": "backend",
+            "env": {
+                "SPRING_PROFILES_ACTIVE": "test"
+            },
+            "args": [],
+            "vmArgs": [
+                "-ea"
+            ]
+        },
+        {
+            "type": "java",
+            "name": "All Tests",
+            "request": "launch",
+            "mainClass": "org.junit.platform.console.ConsoleLauncher",
+            "projectName": "backend",
+            "env": {
+                "SPRING_PROFILES_ACTIVE": "test"
+            },
+            "args": [
+                "--class-path",
+                "${workspaceFolder}/build/classes/java/test",
+                "--select-package",
+                "jp.kensudo"
+            ],
+            "vmArgs": [
+                "-ea"
+            ]
+        }
+    ]
+} 

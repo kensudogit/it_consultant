@@ -1,8 +1,9 @@
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+import java.time.Duration
 
 plugins {
     id("org.springframework.boot") version "3.2.0"
     id("io.spring.dependency-management") version "1.1.4"
+    id("jacoco")
     java
 }
 
@@ -30,6 +31,7 @@ dependencies {
 
     // Database
     runtimeOnly("org.postgresql:postgresql")
+    testRuntimeOnly("com.h2database:h2")
 
     // JWT
     implementation("io.jsonwebtoken:jjwt-api:0.12.3")
@@ -40,18 +42,47 @@ dependencies {
     developmentOnly("org.springframework.boot:spring-boot-devtools")
     annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
 
-    // Test
-    testImplementation("org.springframework.boot:spring-boot-starter-test")
-    testImplementation("org.springframework.security:spring-security-test")
+    // Test Dependencies
+testImplementation("org.springframework.boot:spring-boot-starter-test") {
+    exclude(group = "org.junit.vintage", module = "junit-vintage-engine")
+}
+testImplementation("org.springframework.security:spring-security-test")
+testImplementation("org.junit.jupiter:junit-jupiter-api")
+testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine")
+testImplementation("org.mockito:mockito-core")
+testImplementation("org.mockito:mockito-junit-jupiter")
 }
 
 tasks.withType<Test> {
     useJUnitPlatform()
+    
+    // テストの並列実行設定
+    maxParallelForks = (Runtime.getRuntime().availableProcessors() / 2).takeIf { it > 0 } ?: 1
+    
+    // テストのタイムアウト設定
+    timeout.set(Duration.ofMinutes(5))
+    
+    // テストログの詳細設定
+    testLogging {
+        events("passed", "skipped", "failed")
+        exceptionFormat = org.gradle.api.tasks.testing.logging.TestExceptionFormat.FULL
+        showCauses = true
+        showExceptions = true
+        showStackTraces = true
+        showStandardStreams = false
+    }
+    
+    // テストフィルター設定
+    filter {
+        includeTestsMatching("*Test")
+        includeTestsMatching("*Tests")
+    }
 }
 
 tasks.withType<JavaCompile> {
     sourceCompatibility = "17"
     targetCompatibility = "17"
+    options.encoding = "UTF-8"
 }
 
 // Spring Boot JAR設定
@@ -59,11 +90,18 @@ springBoot {
     buildInfo()
 }
 
-// テスト設定
+// テストタスクの詳細設定
 tasks.test {
-    useJUnitPlatform()
-    testLogging {
-        events("passed", "skipped", "failed")
+    // テスト実行前のクリーン
+    dependsOn("cleanTest")
+    
+    // テスト失敗時の設定
+    failFast = false
+    
+    // テストレポートの出力
+    reports {
+        html.required.set(true)
+        junitXml.required.set(true)
     }
 }
 
@@ -71,5 +109,26 @@ tasks.test {
 configurations.all {
     resolutionStrategy {
         force("org.springframework.boot:spring-boot-starter-parent:3.2.0")
+    }
+}
+
+// JaCoCo設定
+tasks.jacocoTestReport {
+    reports {
+        xml.required.set(true)
+        html.required.set(true)
+        csv.required.set(false)
+    }
+    
+    dependsOn(tasks.test)
+}
+
+tasks.jacocoTestCoverageVerification {
+    violationRules {
+        rule {
+            limit {
+                minimum = "0.8".toBigDecimal()
+            }
+        }
     }
 } 
