@@ -306,6 +306,10 @@
     -webkit-backdrop-filter: blur(16px);
   }
 
+  .background_test {
+    background: radial-gradient(#473B7B 0%, #3584A7 51%, #30D2BE 100%);
+}
+
   /* スクロールスナップ */
   .scroll-smooth {
     scroll-behavior: smooth;

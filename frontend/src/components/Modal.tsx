@@ -3,15 +3,15 @@ import { X, AlertCircle, CheckCircle, Info, AlertTriangle } from 'lucide-react';
 import { useEffect } from 'react';
 
 interface ModalProps {
-  isOpen: boolean;
-  onClose: () => void;
-  title: string;
-  children: React.ReactNode;
-  type?: 'default' | 'success' | 'error' | 'warning' | 'info';
-  size?: 'sm' | 'md' | 'lg' | 'xl';
-  showCloseButton?: boolean;
-  closeOnOverlayClick?: boolean;
-  closeOnEscape?: boolean;
+  readonly isOpen: boolean;
+  readonly onClose: () => void;
+  readonly title: string;
+  readonly children: React.ReactNode;
+  readonly type?: 'default' | 'success' | 'error' | 'warning' | 'info';
+  readonly size?: 'sm' | 'md' | 'lg' | 'xl';
+  readonly showCloseButton?: boolean;
+  readonly closeOnOverlayClick?: boolean;
+  readonly closeOnEscape?: boolean;
 }
 
 export default function Modal({
@@ -82,7 +82,7 @@ export default function Modal({
         >
           {/* オーバーレイ */}
           <motion.div
-            className="absolute inset-0 bg-black/50 backdrop-blur-sm"
+            className="absolute inset-0 bg-blue-900/60 backdrop-blur-sm"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -91,7 +91,7 @@ export default function Modal({
 
           {/* モーダルコンテンツ */}
           <motion.div
-            className={`relative w-full ${sizeClasses[size]} bg-white rounded-2xl shadow-2xl border ${typeColors[type]} overflow-hidden`}
+            className={`relative w-full ${sizeClasses[size]} bg-gradient-to-br from-blue-50 to-blue-100 rounded-2xl shadow-2xl border ${typeColors[type]} overflow-hidden`}
             initial={{ 
               opacity: 0, 
               scale: 0.9, 
@@ -114,10 +114,10 @@ export default function Modal({
             }}
           >
             {/* ヘッダー */}
-            <div className="flex items-center justify-between p-6 border-b border-gray-100">
+            <div className="flex items-center justify-between p-6 border-b border-blue-200 bg-gradient-to-r from-blue-600 to-blue-700">
               <div className="flex items-center space-x-3">
                 {typeIcons[type]}
-                <h2 className="text-xl font-semibold text-gray-900">
+                <h2 className="text-xl font-semibold text-white">
                   {title}
                 </h2>
               </div>
@@ -125,7 +125,7 @@ export default function Modal({
               {showCloseButton && (
                 <motion.button
                   onClick={onClose}
-                  className="p-2 text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded-lg transition-all duration-200"
+                  className="p-2 text-blue-200 hover:text-white hover:bg-blue-500/30 rounded-lg transition-all duration-200"
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.9 }}
                 >
@@ -135,7 +135,7 @@ export default function Modal({
             </div>
 
             {/* コンテンツ */}
-            <div className="p-6">
+            <div className="p-6 bg-blue-50/50">
               {children}
             </div>
           </motion.div>
@@ -147,13 +147,13 @@ export default function Modal({
 
 // モーダル用のフッターコンポーネント
 interface ModalFooterProps {
-  children: React.ReactNode;
-  className?: string;
+  readonly children: React.ReactNode;
+  readonly className?: string;
 }
 
 export function ModalFooter({ children, className = '' }: ModalFooterProps) {
   return (
-    <div className={`flex items-center justify-end space-x-3 pt-6 border-t border-gray-100 ${className}`}>
+    <div className={`flex items-center justify-end space-x-3 pt-6 border-t border-blue-200 ${className}`}>
       {children}
     </div>
   );
@@ -161,11 +161,11 @@ export function ModalFooter({ children, className = '' }: ModalFooterProps) {
 
 // モーダル用のボタンコンポーネント
 interface ModalButtonProps {
-  children: React.ReactNode;
-  onClick?: () => void;
-  variant?: 'primary' | 'secondary' | 'danger';
-  disabled?: boolean;
-  loading?: boolean;
+  readonly children: React.ReactNode;
+  readonly onClick?: () => void;
+  readonly variant?: 'primary' | 'secondary' | 'danger';
+  readonly disabled?: boolean;
+  readonly loading?: boolean;
 }
 
 export function ModalButton({ 

@@ -93,7 +93,7 @@ export default function Hero() {
                     whileHover={{ scale: 1.05, rotate: 5 }}
                     whileTap={{ scale: 0.95 }}
                   >
-                    <span className="text-white text-3xl font-bold">須</span>
+                    <span className="text-white text-3xl font-bold"></span>
                   </motion.div>
                   <div>
                     <h1 className="text-5xl lg:text-6xl font-bold text-gradient leading-tight">

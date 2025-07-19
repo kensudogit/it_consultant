@@ -62,7 +62,7 @@ export default function InteractiveCard({
       />
 
       {/* 画像 */}
-      {image && (
+       {image && (
         <div className="relative h-48 overflow-hidden">
           <motion.img
             src={image}
@@ -73,7 +73,7 @@ export default function InteractiveCard({
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
         </div>
-      )}
+      )} 
 
       {/* コンテンツ */}
       <div className="p-6">

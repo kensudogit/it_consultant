@@ -8,6 +8,7 @@ import Footer from '@/components/Footer'
 
 export default function HomePage() {
   return (
+    <div class="background_test">
     <div className="min-h-screen">
       {/* ヘッダー */}
       <Header />
@@ -45,6 +46,7 @@ export default function HomePage() {
 
       {/* フッター */}
       <Footer />
+    </div>
     </div>
   )
 } 
