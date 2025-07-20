@@ -28,9 +28,9 @@ export default function InteractiveCard({
   const [isHovered, setIsHovered] = useState(false);
 
   const variants = {
-    default: 'bg-white border border-gray-200 shadow-soft',
-    elevated: 'bg-white shadow-lg border border-gray-100',
-    glass: 'glass border border-white/20'
+    default: 'card',
+    elevated: 'card-hover',
+    glass: 'card-glass'
   };
 
   const handleClick = () => {
@@ -54,11 +54,21 @@ export default function InteractiveCard({
       onHoverEnd={() => setIsHovered(false)}
       onClick={handleClick}
     >
-      {/* 背景グラデーション */}
+      {/* 高度な背景グラデーション */}
       <motion.div
-        className="absolute inset-0 bg-gradient-to-br from-blue-50/50 to-indigo-50/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+        className="absolute inset-0 bg-gradient-to-br from-blue-50/50 via-purple-50/50 to-indigo-50/50 opacity-0 group-hover:opacity-100 transition-opacity duration-700"
         initial={false}
         animate={{ opacity: isHovered ? 1 : 0 }}
+      />
+      
+      {/* 追加の光効果 */}
+      <motion.div
+        className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700"
+        initial={false}
+        animate={{ opacity: isHovered ? 1 : 0 }}
+        style={{ transform: 'translateX(-100%)' }}
+        whileHover={{ x: '200%' }}
+        transition={{ duration: 0.8, ease: "easeInOut" }}
       />
 
       {/* 画像 */}
@@ -81,17 +91,18 @@ export default function InteractiveCard({
         <div className="flex items-start justify-between mb-4">
           <div className="flex items-center space-x-3">
             {icon && (
-              <motion.div
-                className="w-10 h-10 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-xl flex items-center justify-center text-white"
-                whileHover={{ rotate: 5, scale: 1.1 }}
-              >
+                        <motion.div
+            className="w-14 h-14 bg-gradient-to-br from-blue-500 via-purple-500 to-indigo-600 rounded-2xl flex items-center justify-center text-white shadow-glow-animated"
+            whileHover={{ rotate: 10, scale: 1.15 }}
+            transition={{ duration: 0.3 }}
+          >
                 {icon}
               </motion.div>
             )}
             <div>
-              <h3 className="text-lg font-semibold text-gray-900 group-hover:text-blue-600 transition-colors duration-300">
-                {title}
-              </h3>
+                      <h3 className="text-lg font-semibold text-gradient group-hover:text-gradient-rainbow transition-all duration-500">
+          {title}
+        </h3>
               {rating && (
                 <div className="flex items-center space-x-1 mt-1">
                   {[...Array(5)].map((_, i) => (
@@ -147,12 +158,13 @@ export default function InteractiveCard({
           animate={{ x: isHovered ? 4 : 0 }}
           transition={{ duration: 0.2 }}
         >
-          <span className="text-blue-600 font-medium text-sm group-hover:text-blue-700 transition-colors duration-300">
+          <span className="text-gradient font-medium text-sm group-hover:text-gradient-rainbow transition-all duration-500">
             {link ? '詳細を見る' : '詳細'}
           </span>
           <motion.div
-            className="w-6 h-6 bg-blue-600 rounded-full flex items-center justify-center text-white"
-            whileHover={{ scale: 1.1 }}
+            className="w-7 h-7 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full flex items-center justify-center text-white shadow-glow"
+            whileHover={{ scale: 1.2, rotate: 360 }}
+            transition={{ duration: 0.4 }}
           >
             <ArrowRight className="w-3 h-3" />
           </motion.div>

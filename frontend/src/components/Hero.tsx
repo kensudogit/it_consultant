@@ -60,15 +60,16 @@ export default function Hero() {
   ];
 
   return (
-    <section id="home" className="relative min-h-screen flex items-center bg-gradient-to-br from-blue-50 via-white to-indigo-50 overflow-hidden">
-      {/* 背景アニメーション */}
+    <section id="home" className="relative min-h-screen flex items-center bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 overflow-hidden noise">
+      {/* 高度な背景アニメーション */}
       <motion.div
-        className="absolute inset-0 opacity-10"
+        className="absolute inset-0 opacity-15"
         style={{ y, opacity }}
       >
-        <div className="absolute top-20 left-10 w-72 h-72 bg-blue-400 rounded-full mix-blend-multiply filter blur-xl animate-float"></div>
-        <div className="absolute top-40 right-10 w-72 h-72 bg-purple-400 rounded-full mix-blend-multiply filter blur-xl animate-float" style={{ animationDelay: '2s' }}></div>
-        <div className="absolute -bottom-8 left-20 w-72 h-72 bg-pink-400 rounded-full mix-blend-multiply filter blur-xl animate-float" style={{ animationDelay: '4s' }}></div>
+        <div className="absolute top-20 left-10 w-80 h-80 bg-gradient-to-br from-blue-400 to-purple-500 rounded-full mix-blend-multiply filter blur-2xl animate-float morph"></div>
+        <div className="absolute top-40 right-10 w-80 h-80 bg-gradient-to-br from-purple-400 to-pink-500 rounded-full mix-blend-multiply filter blur-2xl animate-float morph" style={{ animationDelay: '2s' }}></div>
+        <div className="absolute -bottom-8 left-20 w-80 h-80 bg-gradient-to-br from-pink-400 to-blue-500 rounded-full mix-blend-multiply filter blur-2xl animate-float morph" style={{ animationDelay: '4s' }}></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-gradient-to-br from-indigo-400 to-blue-500 rounded-full mix-blend-multiply filter blur-3xl animate-float" style={{ animationDelay: '1s' }}></div>
       </motion.div>
 
       <div className="container-max section-padding relative z-10">
@@ -89,17 +90,17 @@ export default function Hero() {
               >
                 <div className="inline-flex items-center space-x-4 mb-6">
                   <motion.div 
-                    className="w-20 h-20 bg-gradient-to-br from-blue-600 to-indigo-700 rounded-2xl flex items-center justify-center shadow-lg"
-                    whileHover={{ scale: 1.05, rotate: 5 }}
+                    className="w-24 h-24 bg-gradient-to-br from-blue-600 via-purple-600 to-indigo-700 rounded-3xl flex items-center justify-center shadow-glow-animated morph"
+                    whileHover={{ scale: 1.1, rotate: 10 }}
                     whileTap={{ scale: 0.95 }}
                   >
-                    <span className="text-white text-3xl font-bold"></span>
+                    <span className="text-white text-4xl font-bold">須</span>
                   </motion.div>
                   <div>
-                    <h1 className="text-5xl lg:text-6xl font-bold text-gradient leading-tight">
+                    <h1 className="heading-gradient text-gradient-animated">
                       須藤技術士事務所
                     </h1>
-                    <p className="text-xl lg:text-2xl text-blue-600 font-medium mt-2">
+                    <p className="text-xl lg:text-2xl text-gradient-rainbow font-semibold mt-2">
                       情報工学部門
                     </p>
                   </div>
@@ -126,7 +127,7 @@ export default function Hero() {
               >
                 <motion.button
                   onClick={handleContactClick}
-                  className="group inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
+                  className="btn-primary group"
                   whileHover={{ scale: 1.05, y: -2 }}
                   whileTap={{ scale: 0.95 }}
                 >
@@ -135,7 +136,7 @@ export default function Hero() {
                 </motion.button>
                 <motion.button
                   onClick={handleServicesClick}
-                  className="group inline-flex items-center justify-center px-8 py-4 border-2 border-blue-600 text-blue-600 font-semibold rounded-xl hover:bg-blue-600 hover:text-white transition-all duration-300"
+                  className="btn-outline group"
                   whileHover={{ scale: 1.05, y: -2 }}
                   whileTap={{ scale: 0.95 }}
                 >
@@ -144,7 +145,7 @@ export default function Hero() {
                 </motion.button>
               </motion.div>
 
-              {/* 統計情報 */}
+              {/* 洗練された統計情報 */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 20 }}
@@ -157,13 +158,24 @@ export default function Hero() {
                     initial={{ opacity: 0, scale: 0.8 }}
                     animate={{ opacity: isVisible ? 1 : 0, scale: isVisible ? 1 : 0.8 }}
                     transition={{ duration: 0.6, delay: 1 + index * 0.1 }}
-                    className="text-center"
+                    className="text-center group"
                   >
-                    <div className="flex items-center justify-center space-x-2 mb-2">
-                      <div className="text-blue-600">{stat.icon}</div>
-                      <div className="text-2xl lg:text-3xl font-bold text-gray-900">{stat.number}</div>
-                    </div>
-                    <p className="text-sm text-gray-600">{stat.label}</p>
+                    <motion.div 
+                      className="bg-white/80 backdrop-blur-sm rounded-2xl p-4 shadow-soft hover:shadow-medium transition-all duration-300"
+                      whileHover={{ scale: 1.05, y: -4 }}
+                    >
+                      <div className="flex items-center justify-center space-x-2 mb-2">
+                        <motion.div 
+                          className="text-blue-600 group-hover:text-purple-600 transition-colors duration-300"
+                          whileHover={{ rotate: 360 }}
+                          transition={{ duration: 0.6 }}
+                        >
+                          {stat.icon}
+                        </motion.div>
+                        <div className="text-2xl lg:text-3xl font-bold text-gradient">{stat.number}</div>
+                      </div>
+                      <p className="text-sm text-gray-600 font-medium">{stat.label}</p>
+                    </motion.div>
                   </motion.div>
                 ))}
               </motion.div>
@@ -185,7 +197,7 @@ export default function Hero() {
                   className="group"
                 >
                   <motion.div
-                    className="bg-white/80 backdrop-blur-sm border border-gray-200 rounded-2xl p-6 shadow-soft hover:shadow-lg transition-all duration-300"
+                    className="card-hover"
                     whileHover={{ scale: 1.02, y: -4 }}
                   >
                     <div className="flex items-start space-x-4">

@@ -55,12 +55,12 @@ export default function Header() {
 
   return (
     <>
-      {/* トップバー */}
+      {/* 洗練されたトップバー */}
       <motion.div
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.6 }}
-        className="bg-gradient-to-r from-blue-600 to-indigo-700 text-white text-sm py-2"
+        className="bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-700 text-white text-sm py-3 shadow-glow"
       >
         <div className="container-max px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between">
@@ -89,8 +89,8 @@ export default function Header() {
         transition={{ duration: 0.6, delay: 0.1 }}
         className={`fixed top-8 left-0 right-0 z-50 transition-all duration-500 ${
           isScrolled
-            ? 'bg-white/95 backdrop-blur-xl shadow-2xl border-b border-gray-100'
-            : 'bg-white/90 backdrop-blur-md shadow-lg'
+            ? 'bg-white/95 backdrop-blur-xl shadow-large border-b border-gray-100/50'
+            : 'bg-white/90 backdrop-blur-md shadow-medium'
         }`}
       >
         <div className="container-max px-4 sm:px-6 lg:px-8">
@@ -103,17 +103,17 @@ export default function Header() {
               className="flex items-center space-x-3"
             >
               <motion.div 
-                className="w-12 h-12 lg:w-14 lg:h-14 bg-gradient-to-br from-blue-600 to-indigo-700 rounded-2xl flex items-center justify-center shadow-lg"
-                whileHover={{ scale: 1.05, rotate: 5 }}
+                className="w-12 h-12 lg:w-14 lg:h-14 bg-gradient-to-br from-blue-600 via-purple-600 to-indigo-700 rounded-2xl flex items-center justify-center shadow-glow-animated morph"
+                whileHover={{ scale: 1.1, rotate: 10 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <span className="text-white text-xl lg:text-2xl font-bold"></span>
+                <span className="text-white text-xl lg:text-2xl font-bold">須</span>
               </motion.div>
               <div className="hidden sm:block">
-                <h1 className="text-lg lg:text-xl font-bold bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent">
+                <h1 className="text-lg lg:text-xl font-bold text-gradient-animated">
                   須藤技術士事務所
                 </h1>
-                <p className="text-xs lg:text-sm text-blue-600 font-medium">
+                <p className="text-xs lg:text-sm text-gradient-rainbow font-medium">
                   情報工学部門
                 </p>
               </div>
@@ -188,7 +188,7 @@ export default function Header() {
             >
               <motion.button
                 onClick={handleContactClick}
-                className="px-6 py-3 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-semibold rounded-xl hover:from-blue-700 hover:to-indigo-700 transition-all duration-300 shadow-lg"
+                className="btn-primary"
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
               >
