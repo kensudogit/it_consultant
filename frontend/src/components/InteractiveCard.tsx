@@ -18,7 +18,7 @@ export default function InteractiveCard({
   title,
   description,
   icon,
-  image,
+  image: _image,
   tags = [],
   link,
   rating,
@@ -62,10 +62,10 @@ export default function InteractiveCard({
       />
 
       {/* 画像 */}
-       {image && (
+      {_image && (
         <div className="relative h-48 overflow-hidden">
           <motion.img
-            src={image}
+            src={_image}
             alt={title}
             className="w-full h-full object-cover"
             whileHover={{ scale: 1.1 }}
@@ -73,7 +73,7 @@ export default function InteractiveCard({
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
         </div>
-      )} 
+      )}
 
       {/* コンテンツ */}
       <div className="p-6">

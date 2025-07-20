@@ -24,11 +24,15 @@ repositories {
 dependencies {
     // Spring Boot Starters
     implementation("org.springframework.boot:spring-boot-starter-web")
-    implementation("org.springframework.boot:spring-boot-starter-data-jpa")
     implementation("org.springframework.boot:spring-boot-starter-validation")
     implementation("org.springframework.boot:spring-boot-starter-security")
     implementation("org.springframework.boot:spring-boot-starter-mail")
 
+    // Doma2 Database Framework
+    implementation("org.seasar.doma:doma-core:2.54.0")
+    implementation("org.seasar.doma:doma-slf4j:2.54.0")
+    annotationProcessor("org.seasar.doma:doma-processor:2.54.0")
+    
     // Database
     runtimeOnly("org.postgresql:postgresql")
     testRuntimeOnly("com.h2database:h2")
@@ -83,6 +87,14 @@ tasks.withType<JavaCompile> {
     sourceCompatibility = "17"
     targetCompatibility = "17"
     options.encoding = "UTF-8"
+    
+    // Doma2 annotation processor設定
+    options.compilerArgs.add("-Adoma.domain.converters=jp.kensudo.domain.converter.*")
+    options.compilerArgs.add("-Adoma.dao.package=jp.kensudo.dao")
+    options.compilerArgs.add("-Adoma.dao.suffix=Dao")
+    options.compilerArgs.add("-Adoma.domain.package=jp.kensudo.domain")
+    options.compilerArgs.add("-Adoma.entity.package=jp.kensudo.entity")
+    options.compilerArgs.add("-Adoma.sql.package=jp.kensudo.sql")
 }
 
 // Spring Boot JAR設定
