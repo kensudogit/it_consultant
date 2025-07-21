@@ -15,6 +15,16 @@ import {
   TrendingUp,
   Shield
 } from 'lucide-react';
+import { 
+  EngineerIcon, 
+  BusinessUserIcon, 
+  DetailedClockIcon, 
+  ProjectIcon, 
+  SatisfactionStarIcon,
+  RocketIcon,
+  SupportIcon
+} from './RealisticIcons';
+import { RealisticButton } from './RealisticButtons';
 import toast from 'react-hot-toast';
 
 export default function About() {
@@ -27,12 +37,12 @@ export default function About() {
   };
 
   const companyInfo = [
-    { label: '会社名', value: '須藤技術士事務所', icon: <Building className="w-4 h-4" /> },
-    { label: '代表者', value: '須藤 技術士（情報工学部門）', icon: <Users className="w-4 h-4" /> },
-    { label: '所在地', value: '〒150-0002\n東京都渋谷区渋谷2-1-1', icon: <MapPin className="w-4 h-4" /> },
-    { label: '電話番号', value: '03-1234-5678', icon: <Phone className="w-4 h-4" /> },
-    { label: 'メールアドレス', value: 'info@sudou-engineering.com', icon: <Mail className="w-4 h-4" /> },
-    { label: '資格', value: '技術士（情報工学部門）', icon: <Award className="w-4 h-4" /> }
+    { label: '会社名', value: '須藤技術士事務所', icon: <Building className="w-5 h-5" /> },
+    { label: '代表者', value: '須藤 技術士（情報工学部門）', icon: <BusinessUserIcon className="w-5 h-5" /> },
+    { label: '所在地', value: '〒150-0002\n東京都渋谷区渋谷2-1-1', icon: <MapPin className="w-5 h-5" /> },
+    { label: '電話番号', value: '03-1234-5678', icon: <Phone className="w-5 h-5" /> },
+    { label: 'メールアドレス', value: 'info@sudou-engineering.com', icon: <Mail className="w-5 h-5" /> },
+    { label: '資格', value: '技術士（情報工学部門）', icon: <EngineerIcon className="w-5 h-5" /> }
   ];
 
   const businessAreas = [
@@ -44,19 +54,19 @@ export default function About() {
 
   const strengths = [
     {
-      icon: <Award className="w-6 h-6" />,
+      icon: <EngineerIcon className="w-7 h-7" />,
       title: '技術士資格',
       description: '情報工学部門の技術士として、高度な技術力と豊富な経験を有しています。技術士法に基づく技術士として、社会的責任を自覚し、技術を通じて社会の発展に貢献します。',
       color: 'blue'
     },
     {
-      icon: <TrendingUp className="w-6 h-6" />,
+      icon: <RocketIcon className="w-7 h-7" />,
       title: '豊富な実績',
       description: '大手企業から中小企業まで、様々な規模のプロジェクトに携わってきました。各業界の特性を理解し、お客様のニーズに最適化されたソリューションを提供します。',
       color: 'green'
     },
     {
-      icon: <Shield className="w-6 h-6" />,
+      icon: <SupportIcon className="w-7 h-7" />,
       title: '継続的なサポート',
       description: 'システム導入後も継続的なサポートを提供し、お客様のビジネスの成長をサポートします。技術の進歩に合わせて、常に最新のソリューションをご提案いたします。',
       color: 'purple'
@@ -139,7 +149,7 @@ export default function About() {
                   className="group"
                 >
                   <motion.div
-                    className="bg-white/80 backdrop-blur-sm border border-gray-200 rounded-2xl p-6 shadow-soft hover:shadow-lg transition-all duration-300"
+                    className="bg-gradient-to-br from-teal-200 via-cyan-200 to-sky-200 border-2 border-teal-400 rounded-2xl p-6 shadow-soft hover:shadow-lg transition-all duration-300"
                     whileHover={{ scale: 1.02, y: -4 }}
                   >
                     <div className="flex items-start space-x-4">
@@ -171,31 +181,68 @@ export default function About() {
             transition={{ duration: 0.6, delay: 0.3 }}
             viewport={{ once: true }}
           >
-            <div className="bg-white rounded-2xl shadow-soft p-8">
+            <div className="bg-gradient-to-br from-yellow-200 via-amber-200 to-orange-200 rounded-2xl shadow-soft p-8 border-2 border-yellow-400">
               <h3 className="text-2xl font-bold text-gray-900 mb-8 flex items-center">
-                <Briefcase className="w-6 h-6 text-blue-600 mr-3" />
+                <Briefcase className="w-6 h-6 text-yellow-700 mr-3" />
                 会社情報
               </h3>
               
               <div className="space-y-6">
-                {companyInfo.map((info, index) => (
-                  <motion.div
-                    key={info.label}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6, delay: 0.4 + index * 0.1 }}
-                    viewport={{ once: true }}
-                    className="flex items-start space-x-3"
-                  >
-                    <div className="text-blue-600 mt-1">
-                      {info.icon}
-                    </div>
-                    <div className="flex-1">
-                      <dt className="font-semibold text-gray-900 mb-1">{info.label}</dt>
-                      <dd className="text-gray-600 whitespace-pre-line">{info.value}</dd>
-                    </div>
-                  </motion.div>
-                ))}
+                {/* 基本情報セクション */}
+                <div className="bg-white/60 backdrop-blur-sm rounded-xl p-6 border-2 border-blue-200/50 shadow-soft">
+                  <h4 className="text-lg font-semibold text-gray-800 mb-4 flex items-center">
+                    <Building className="w-5 h-5 text-blue-600 mr-2" />
+                    基本情報
+                  </h4>
+                  <div className="space-y-4">
+                    {companyInfo.slice(0, 3).map((info, index) => (
+                      <motion.div
+                        key={info.label}
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.6, delay: 0.4 + index * 0.1 }}
+                        viewport={{ once: true }}
+                        className="flex items-start space-x-3"
+                      >
+                        <div className="text-blue-600 mt-1">
+                          {info.icon}
+                        </div>
+                        <div className="flex-1">
+                          <dt className="font-semibold text-gray-900 mb-1">{info.label}</dt>
+                          <dd className="text-gray-600 whitespace-pre-line">{info.value}</dd>
+                        </div>
+                      </motion.div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* 連絡先情報セクション */}
+                <div className="bg-white/60 backdrop-blur-sm rounded-xl p-6 border-2 border-green-200/50 shadow-soft">
+                  <h4 className="text-lg font-semibold text-gray-800 mb-4 flex items-center">
+                    <Phone className="w-5 h-5 text-green-600 mr-2" />
+                    連絡先情報
+                  </h4>
+                  <div className="space-y-4">
+                    {companyInfo.slice(3, 6).map((info, index) => (
+                      <motion.div
+                        key={info.label}
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.6, delay: 0.4 + index * 0.1 }}
+                        viewport={{ once: true }}
+                        className="flex items-start space-x-3"
+                      >
+                        <div className="text-green-600 mt-1">
+                          {info.icon}
+                        </div>
+                        <div className="flex-1">
+                          <dt className="font-semibold text-gray-900 mb-1">{info.label}</dt>
+                          <dd className="text-gray-600 whitespace-pre-line">{info.value}</dd>
+                        </div>
+                      </motion.div>
+                    ))}
+                  </div>
+                </div>
               </div>
 
               {/* 事業内容 */}
@@ -231,14 +278,14 @@ export default function About() {
                 transition={{ duration: 0.6, delay: 1.0 }}
                 viewport={{ once: true }}
               >
-                <motion.button
+                <RealisticButton
                   onClick={handleContactClick}
-                  className="w-full px-6 py-3 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-semibold rounded-xl hover:shadow-lg transition-all duration-300"
-                  whileHover={{ scale: 1.02, y: -2 }}
-                  whileTap={{ scale: 0.98 }}
+                  variant="primary"
+                  size="lg"
+                  fullWidth
                 >
                   お問い合わせ
-                </motion.button>
+                </RealisticButton>
               </motion.div>
             </div>
           </motion.div>
@@ -269,7 +316,7 @@ export default function About() {
                 className="group"
               >
                 <motion.div
-                  className="bg-white rounded-2xl shadow-soft hover:shadow-lg transition-all duration-300 p-6 h-full"
+                  className="bg-gradient-to-br from-lime-200 via-green-200 to-emerald-200 border-2 border-lime-400 rounded-2xl shadow-soft hover:shadow-lg transition-all duration-300 p-6 h-full"
                   whileHover={{ scale: 1.02, y: -4 }}
                 >
                   <div className="mb-4">

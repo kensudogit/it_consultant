@@ -17,6 +17,19 @@ import {
   Globe,
   Cloud
 } from 'lucide-react';
+import { 
+  CodeIcon, 
+  DatabaseIcon, 
+  CloudIcon, 
+  MobileIcon, 
+  ServerIcon, 
+  NetworkIcon, 
+  SettingsIcon,
+  EngineerIcon,
+  RocketIcon,
+  SupportIcon
+} from './RealisticIcons';
+import { RealisticButton } from './RealisticButtons';
 import InteractiveCard from './InteractiveCard';
 import toast from 'react-hot-toast';
 
@@ -25,7 +38,7 @@ const services = [
     id: 1,
     title: 'システム設計・開発',
     description: '要件定義から設計、開発、テストまで一貫して対応。最新技術を活用した高品質なシステムを構築します。',
-    icon: <Code className="w-8 h-8" />,
+    icon: <CodeIcon className="w-9 h-9" />,
     features: [
       '要件定義・基本設計',
       '詳細設計・実装',
@@ -41,7 +54,7 @@ const services = [
     id: 2,
     title: 'ITコンサルティング',
     description: '技術的視点からお客様のビジネス課題を分析し、最適なIT戦略とソリューションを提案します。',
-    icon: <BarChart3 className="w-8 h-8" />,
+    icon: <EngineerIcon className="w-9 h-9" />,
     features: [
       'IT戦略策定',
       'システム選定支援',
@@ -57,7 +70,7 @@ const services = [
     id: 3,
     title: '技術指導・研修',
     description: '開発チームの技術力向上をサポート。実践的な技術指導と研修プログラムを提供します。',
-    icon: <GraduationCap className="w-8 h-8" />,
+    icon: <SupportIcon className="w-9 h-9" />,
     features: [
       'プログラミング研修',
       'アーキテクチャ設計研修',
@@ -73,7 +86,7 @@ const services = [
     id: 4,
     title: 'システム保守・運用',
     description: 'システム導入後の保守・運用をサポート。安定したシステム稼働と継続的な改善を実現します。',
-    icon: <Settings className="w-8 h-8" />,
+    icon: <SettingsIcon className="w-9 h-9" />,
     features: [
       '定期メンテナンス',
       '障害対応・復旧',
@@ -88,16 +101,16 @@ const services = [
 ];
 
 const techStack = [
-  { name: 'Java', icon: <Code className="w-6 h-6" />, category: 'Backend' },
-  { name: 'Spring Boot', icon: <Zap className="w-6 h-6" />, category: 'Framework' },
-  { name: 'React', icon: <Globe className="w-6 h-6" />, category: 'Frontend' },
-  { name: 'Next.js', icon: <Globe className="w-6 h-6" />, category: 'Framework' },
-  { name: 'PostgreSQL', icon: <Shield className="w-6 h-6" />, category: 'Database' },
-  { name: 'Docker', icon: <Settings className="w-6 h-6" />, category: 'DevOps' },
-  { name: 'AWS', icon: <Globe className="w-6 h-6" />, category: 'Cloud' },
-  { name: 'Azure', icon: <Globe className="w-6 h-6" />, category: 'Cloud' },
-  { name: 'Kubernetes', icon: <Settings className="w-6 h-6" />, category: 'DevOps' },
-  { name: 'TypeScript', icon: <Code className="w-6 h-6" />, category: 'Language' },
+  { name: 'Java', icon: <CodeIcon className="w-7 h-7" />, category: 'Backend' },
+  { name: 'Spring Boot', icon: <RocketIcon className="w-7 h-7" />, category: 'Framework' },
+  { name: 'React', icon: <Globe className="w-7 h-7" />, category: 'Frontend' },
+  { name: 'Next.js', icon: <Globe className="w-7 h-7" />, category: 'Framework' },
+  { name: 'PostgreSQL', icon: <DatabaseIcon className="w-7 h-7" />, category: 'Database' },
+  { name: 'Docker', icon: <SettingsIcon className="w-7 h-7" />, category: 'DevOps' },
+  { name: 'AWS', icon: <CloudIcon className="w-7 h-7" />, category: 'Cloud' },
+  { name: 'Azure', icon: <CloudIcon className="w-7 h-7" />, category: 'Cloud' },
+  { name: 'Kubernetes', icon: <ServerIcon className="w-7 h-7" />, category: 'DevOps' },
+  { name: 'TypeScript', icon: <CodeIcon className="w-7 h-7" />, category: 'Language' },
   { name: 'Python', icon: <Code className="w-6 h-6" />, category: 'Language' },
   { name: 'Node.js', icon: <Zap className="w-6 h-6" />, category: 'Runtime' }
 ];
@@ -204,7 +217,7 @@ export default function Services() {
                   animate={{ opacity: 1, x: 0 }}
                   exit={{ opacity: 0, x: -50 }}
                   transition={{ duration: 0.5 }}
-                  className="bg-white rounded-2xl shadow-soft p-8 lg:p-12"
+                  className="bg-gradient-to-br from-purple-200 via-pink-200 to-rose-200 rounded-2xl shadow-soft p-8 lg:p-12 border-2 border-purple-400"
                 >
                   <div className="flex items-center mb-8">
                     <motion.div 
@@ -238,20 +251,51 @@ export default function Services() {
                         <CheckCircle className="w-6 h-6 text-green-500 mr-3" />
                         主な業務内容
                       </h4>
-                      <ul className="space-y-4">
-                        {service.features.map((feature, index) => (
-                          <motion.li 
-                            key={index} 
-                            className="flex items-start"
-                            initial={{ opacity: 0, x: -20 }}
-                            animate={{ opacity: 1, x: 0 }}
-                            transition={{ duration: 0.3, delay: index * 0.1 }}
-                          >
-                            <div className="w-2 h-2 bg-blue-600 rounded-full mt-3 mr-4 flex-shrink-0"></div>
-                            <span className="text-gray-700 text-lg">{feature}</span>
-                          </motion.li>
-                        ))}
-                      </ul>
+                      <div className="space-y-4">
+                        {/* 主要業務セクション */}
+                        <div className="bg-white/60 backdrop-blur-sm rounded-xl p-4 border-2 border-blue-200/50 shadow-soft">
+                          <h5 className="text-md font-semibold text-gray-800 mb-3 flex items-center">
+                            <Code className="w-4 h-4 text-blue-600 mr-2" />
+                            主要業務
+                          </h5>
+                          <ul className="space-y-3">
+                            {service.features.slice(0, 3).map((feature, index) => (
+                              <motion.li 
+                                key={index} 
+                                className="flex items-start"
+                                initial={{ opacity: 0, x: -20 }}
+                                animate={{ opacity: 1, x: 0 }}
+                                transition={{ duration: 0.3, delay: index * 0.1 }}
+                              >
+                                <div className="w-2 h-2 bg-blue-600 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                                <span className="text-gray-700 text-sm">{feature}</span>
+                              </motion.li>
+                            ))}
+                          </ul>
+                        </div>
+
+                        {/* 追加業務セクション */}
+                        <div className="bg-white/60 backdrop-blur-sm rounded-xl p-4 border-2 border-green-200/50 shadow-soft">
+                          <h5 className="text-md font-semibold text-gray-800 mb-3 flex items-center">
+                            <CheckCircle className="w-4 h-4 text-green-600 mr-2" />
+                            追加業務
+                          </h5>
+                          <ul className="space-y-3">
+                            {service.features.slice(3).map((feature, index) => (
+                              <motion.li 
+                                key={index} 
+                                className="flex items-start"
+                                initial={{ opacity: 0, x: -20 }}
+                                animate={{ opacity: 1, x: 0 }}
+                                transition={{ duration: 0.3, delay: index * 0.1 }}
+                              >
+                                <div className="w-2 h-2 bg-green-600 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                                <span className="text-gray-700 text-sm">{feature}</span>
+                              </motion.li>
+                            ))}
+                          </ul>
+                        </div>
+                      </div>
                     </div>
 
                     <div className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl p-6">
@@ -278,15 +322,14 @@ export default function Services() {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: 0.3 }}
                   >
-                    <motion.button
+                    <RealisticButton
                       onClick={handleContactClick}
-                      className="group inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
-                      whileHover={{ scale: 1.05, y: -2 }}
-                      whileTap={{ scale: 0.95 }}
+                      variant="primary"
+                      size="lg"
+                      icon={<ArrowRight className="w-5 h-5" />}
                     >
                       お問い合わせ
-                      <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform duration-200" />
-                    </motion.button>
+                    </RealisticButton>
                   </motion.div>
                 </motion.div>
               )
@@ -340,7 +383,7 @@ export default function Services() {
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0, scale: 0.8 }}
                   transition={{ duration: 0.3, delay: index * 0.05 }}
-                  className="group bg-white rounded-xl p-4 text-center shadow-soft hover:shadow-lg transition-all duration-300 cursor-pointer"
+                  className="group bg-gradient-to-br from-amber-200 via-yellow-200 to-orange-200 border-2 border-amber-400 rounded-xl p-4 text-center shadow-soft hover:shadow-lg transition-all duration-300 cursor-pointer"
                   whileHover={{ scale: 1.05, y: -4 }}
                 >
                   <div className="text-blue-600 mb-2 group-hover:scale-110 transition-transform duration-300">

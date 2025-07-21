@@ -76,7 +76,7 @@ export default function Header() {
             </div>
             <div className="hidden md:flex items-center space-x-2">
               <MapPin className="w-4 h-4" />
-              <span>東京都渋谷区</span>
+              <span>東京都</span>
             </div>
           </div>
         </div>
@@ -107,7 +107,7 @@ export default function Header() {
                 whileHover={{ scale: 1.1, rotate: 10 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <span className="text-white text-xl lg:text-2xl font-bold">須</span>
+                <span className="text-white text-xl lg:text-2xl font-bold"></span>
               </motion.div>
               <div className="hidden sm:block">
                 <h1 className="text-lg lg:text-xl font-bold text-gradient-animated">

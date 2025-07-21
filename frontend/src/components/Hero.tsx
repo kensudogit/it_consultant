@@ -3,6 +3,16 @@
 import { useState, useEffect } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { ArrowRight, CheckCircle, Zap, Users, Star, Award, Clock, Shield } from 'lucide-react';
+import { 
+  EngineerIcon, 
+  RocketIcon, 
+  SupportIcon, 
+  DetailedClockIcon, 
+  ProjectIcon, 
+  BusinessUserIcon, 
+  SatisfactionStarIcon 
+} from './RealisticIcons';
+import { RealisticButton } from './RealisticButtons';
 import toast from 'react-hot-toast';
 
 export default function Hero() {
@@ -33,19 +43,19 @@ export default function Hero() {
 
   const features = [
     {
-      icon: <Award className="w-5 h-5" />,
+      icon: <EngineerIcon className="w-7 h-7" />,
       title: '技術士資格',
       description: '情報工学部門の技術士として、高度な技術力と豊富な経験を提供',
       color: 'blue'
     },
     {
-      icon: <Zap className="w-5 h-5" />,
+      icon: <RocketIcon className="w-7 h-7" />,
       title: '迅速対応',
       description: 'お客様のニーズに迅速かつ柔軟に対応し、最適なソリューションを提案',
       color: 'green'
     },
     {
-      icon: <Users className="w-5 h-5" />,
+      icon: <SupportIcon className="w-7 h-7" />,
       title: '継続サポート',
       description: 'システム導入後も継続的なサポートとメンテナンスで安心を提供',
       color: 'purple'
@@ -53,10 +63,10 @@ export default function Hero() {
   ];
 
   const stats = [
-    { number: '15+', label: '年の経験', icon: <Clock className="w-4 h-4" /> },
-    { number: '100+', label: 'プロジェクト', icon: <CheckCircle className="w-4 h-4" /> },
-    { number: '50+', label: 'お客様', icon: <Users className="w-4 h-4" /> },
-    { number: '99%', label: '満足度', icon: <Star className="w-4 h-4" /> }
+    { number: '15+', label: '年の経験', icon: <DetailedClockIcon className="w-6 h-6" /> },
+    { number: '100+', label: 'プロジェクト', icon: <ProjectIcon className="w-6 h-6" /> },
+    { number: '50+', label: 'お客様', icon: <BusinessUserIcon className="w-6 h-6" /> },
+    { number: '99%', label: '満足度', icon: <SatisfactionStarIcon className="w-6 h-6" /> }
   ];
 
   return (
@@ -94,7 +104,7 @@ export default function Hero() {
                     whileHover={{ scale: 1.1, rotate: 10 }}
                     whileTap={{ scale: 0.95 }}
                   >
-                    <span className="text-white text-4xl font-bold">須</span>
+                    <span className="text-white text-4xl font-bold"></span>
                   </motion.div>
                   <div>
                     <h1 className="heading-gradient text-gradient-animated">
@@ -125,24 +135,22 @@ export default function Hero() {
                 transition={{ duration: 0.6, delay: 0.6 }}
                 className="flex flex-col sm:flex-row gap-4 mb-12"
               >
-                <motion.button
+                <RealisticButton
                   onClick={handleContactClick}
-                  className="btn-primary group"
-                  whileHover={{ scale: 1.05, y: -2 }}
-                  whileTap={{ scale: 0.95 }}
+                  variant="primary"
+                  size="lg"
+                  icon={<ArrowRight className="w-5 h-5" />}
                 >
                   お問い合わせ
-                  <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform duration-200" />
-                </motion.button>
-                <motion.button
+                </RealisticButton>
+                <RealisticButton
                   onClick={handleServicesClick}
-                  className="btn-outline group"
-                  whileHover={{ scale: 1.05, y: -2 }}
-                  whileTap={{ scale: 0.95 }}
+                  variant="secondary"
+                  size="lg"
+                  icon={<ArrowRight className="w-5 h-5" />}
                 >
                   サービス詳細
-                  <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform duration-200" />
-                </motion.button>
+                </RealisticButton>
               </motion.div>
 
               {/* 洗練された統計情報 */}

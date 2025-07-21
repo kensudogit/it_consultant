@@ -18,6 +18,13 @@ import {
   MessageSquare,
   FileText
 } from 'lucide-react';
+import { 
+  BusinessUserIcon, 
+  DetailedClockIcon, 
+  ProjectIcon, 
+  SatisfactionStarIcon 
+} from './RealisticIcons';
+import { RealisticButton } from './RealisticButtons';
 import toast from 'react-hot-toast';
 import LoadingSpinner from './LoadingSpinner';
 
@@ -68,25 +75,25 @@ export default function Contact() {
 
   const contactInfo = [
     {
-      icon: <MapPin className="w-5 h-5" />,
+      icon: <MapPin className="w-6 h-6" />,
       title: '所在地',
       content: '〒150-0002\n東京都渋谷区渋谷2-1-1',
       color: 'blue'
     },
     {
-      icon: <Phone className="w-5 h-5" />,
+      icon: <Phone className="w-6 h-6" />,
       title: '電話番号',
       content: '03-1234-5678',
       color: 'green'
     },
     {
-      icon: <Mail className="w-5 h-5" />,
+      icon: <Mail className="w-6 h-6" />,
       title: 'メールアドレス',
       content: 'info@sudou-engineering.com',
       color: 'purple'
     },
     {
-      icon: <Clock className="w-5 h-5" />,
+      icon: <DetailedClockIcon className="w-6 h-6" />,
       title: '営業時間',
       content: '平日 9:00-18:00\n土日祝日休み',
       color: 'orange'
@@ -132,9 +139,9 @@ export default function Contact() {
             viewport={{ once: true }}
             className="order-1 lg:order-2"
           >
-            <div className="bg-white rounded-2xl shadow-soft p-8">
+            <div className="bg-gradient-to-br from-green-200 via-emerald-200 to-teal-200 rounded-2xl shadow-soft p-8 border-2 border-green-400">
               <h3 className="text-2xl font-bold text-gray-900 mb-8 flex items-center">
-                <MessageSquare className="w-6 h-6 text-blue-600 mr-3" />
+                <MessageSquare className="w-6 h-6 text-green-700 mr-3" />
                 連絡先情報
               </h3>
               
@@ -201,9 +208,9 @@ export default function Contact() {
             viewport={{ once: true }}
             className="order-2 lg:order-1"
           >
-            <div className="bg-white rounded-2xl shadow-soft p-8">
+            <div className="bg-gradient-to-br from-blue-100 via-blue-200 to-indigo-200 rounded-2xl shadow-soft p-8 border-2 border-blue-300">
               <h3 className="text-2xl font-bold text-gray-900 mb-8 flex items-center">
-                <FileText className="w-6 h-6 text-blue-600 mr-3" />
+                <FileText className="w-6 h-6 text-blue-700 mr-3" />
                 お問い合わせフォーム
               </h3>
 
@@ -242,38 +249,44 @@ export default function Contact() {
               </AnimatePresence>
 
               <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6, delay: 0.4 }}
-                    viewport={{ once: true }}
-                  >
-                    <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
-                      お名前 <span className="text-red-600">*</span>
-                    </label>
-                    <div className="relative">
-                      <User className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
-                      <input
-                        id="name"
-                        type="text"
-                        {...register('name')}
-                        className={`w-full pl-10 pr-4 py-3 border rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 ${
-                          errors.name ? 'border-red-500 bg-red-50' : 'border-gray-300 hover:border-gray-400'
-                        }`}
-                        placeholder="山田太郎"
-                      />
-                    </div>
-                    {errors.name && (
-                      <motion.p
-                        initial={{ opacity: 0, y: -10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        className="mt-1 text-sm text-red-600"
-                      >
-                        {errors.name.message}
-                      </motion.p>
-                    )}
-                  </motion.div>
+                {/* 基本情報セクション */}
+                <div className="bg-white/60 backdrop-blur-sm rounded-xl p-6 border-2 border-blue-200/50 shadow-soft">
+                  <h4 className="text-lg font-semibold text-gray-800 mb-4 flex items-center">
+                    <User className="w-5 h-5 text-blue-600 mr-2" />
+                    基本情報
+                  </h4>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <motion.div
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.6, delay: 0.4 }}
+                      viewport={{ once: true }}
+                    >
+                      <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
+                        お名前 <span className="text-red-600">*</span>
+                      </label>
+                      <div className="relative">
+                        <User className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
+                        <input
+                          id="name"
+                          type="text"
+                          {...register('name')}
+                          className={`w-full pl-10 pr-4 py-3 border rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 ${
+                            errors.name ? 'border-red-500 bg-red-50' : 'border-gray-300 hover:border-gray-400'
+                          }`}
+                          placeholder="山田太郎"
+                        />
+                      </div>
+                      {errors.name && (
+                        <motion.p
+                          initial={{ opacity: 0, y: -10 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          className="mt-1 text-sm text-red-600"
+                        >
+                          {errors.name.message}
+                        </motion.p>
+                      )}
+                    </motion.div>
 
                   <motion.div
                     initial={{ opacity: 0, y: 20 }}
@@ -307,132 +320,141 @@ export default function Contact() {
                     )}
                   </motion.div>
                 </div>
+              </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {/* 会社情報セクション */}
+                <div className="bg-white/60 backdrop-blur-sm rounded-xl p-6 border-2 border-green-200/50 shadow-soft">
+                  <h4 className="text-lg font-semibold text-gray-800 mb-4 flex items-center">
+                    <Building className="w-5 h-5 text-green-600 mr-2" />
+                    会社情報
+                  </h4>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <motion.div
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.6, delay: 0.6 }}
+                      viewport={{ once: true }}
+                    >
+                      <label htmlFor="company" className="block text-sm font-medium text-gray-700 mb-2">
+                        会社名
+                      </label>
+                      <div className="relative">
+                        <Building className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
+                        <input
+                          id="company"
+                          type="text"
+                          {...register('company')}
+                          className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 hover:border-gray-400"
+                          placeholder="株式会社サンプル"
+                        />
+                      </div>
+                    </motion.div>
+
+                    <motion.div
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.6, delay: 0.7 }}
+                      viewport={{ once: true }}
+                    >
+                      <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
+                        電話番号
+                      </label>
+                      <div className="relative">
+                        <Phone className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
+                        <input
+                          id="phone"
+                          type="tel"
+                          {...register('phone')}
+                          className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 hover:border-gray-400"
+                          placeholder="03-1234-5678"
+                        />
+                      </div>
+                    </motion.div>
+                  </div>
+                </div>
+
+                {/* お問い合わせ内容セクション */}
+                <div className="bg-white/60 backdrop-blur-sm rounded-xl p-6 border-2 border-purple-200/50 shadow-soft">
+                  <h4 className="text-lg font-semibold text-gray-800 mb-4 flex items-center">
+                    <MessageSquare className="w-5 h-5 text-purple-600 mr-2" />
+                    お問い合わせ内容
+                  </h4>
                   <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6, delay: 0.6 }}
+                    transition={{ duration: 0.6, delay: 0.8 }}
                     viewport={{ once: true }}
                   >
-                    <label htmlFor="company" className="block text-sm font-medium text-gray-700 mb-2">
-                      会社名
+                    <label htmlFor="subject" className="block text-sm font-medium text-gray-700 mb-2">
+                      件名 <span className="text-red-600">*</span>
                     </label>
-                    <div className="relative">
-                      <Building className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
-                      <input
-                        id="company"
-                        type="text"
-                        {...register('company')}
-                        className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 hover:border-gray-400"
-                        placeholder="株式会社サンプル"
-                      />
-                    </div>
+                    <input
+                      id="subject"
+                      type="text"
+                      {...register('subject')}
+                      className={`w-full px-4 py-3 border rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 ${
+                        errors.subject ? 'border-red-500 bg-red-50' : 'border-gray-300 hover:border-gray-400'
+                      }`}
+                      placeholder="システム開発について"
+                    />
+                    {errors.subject && (
+                      <motion.p
+                        initial={{ opacity: 0, y: -10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        className="mt-1 text-sm text-red-600"
+                      >
+                        {errors.subject.message}
+                      </motion.p>
+                    )}
                   </motion.div>
 
                   <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6, delay: 0.7 }}
+                    transition={{ duration: 0.6, delay: 0.9 }}
                     viewport={{ once: true }}
                   >
-                    <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
-                      電話番号
+                    <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
+                      お問い合わせ内容 <span className="text-red-600">*</span>
                     </label>
-                    <div className="relative">
-                      <Phone className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
-                      <input
-                        id="phone"
-                        type="tel"
-                        {...register('phone')}
-                        className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 hover:border-gray-400"
-                        placeholder="03-1234-5678"
-                      />
-                    </div>
+                    <textarea
+                      id="message"
+                      rows={6}
+                      {...register('message')}
+                      className={`w-full px-4 py-3 border rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 resize-none ${
+                        errors.message ? 'border-red-500 bg-red-50' : 'border-gray-300 hover:border-gray-400'
+                      }`}
+                      placeholder="お問い合わせ内容を詳しくお聞かせください..."
+                    />
+                    {errors.message && (
+                      <motion.p
+                        initial={{ opacity: 0, y: -10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        className="mt-1 text-sm text-red-600"
+                      >
+                        {errors.message.message}
+                      </motion.p>
+                    )}
                   </motion.div>
                 </div>
 
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 0.8 }}
-                  viewport={{ once: true }}
-                >
-                  <label htmlFor="subject" className="block text-sm font-medium text-gray-700 mb-2">
-                    件名 <span className="text-red-600">*</span>
-                  </label>
-                  <input
-                    id="subject"
-                    type="text"
-                    {...register('subject')}
-                    className={`w-full px-4 py-3 border rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 ${
-                      errors.subject ? 'border-red-500 bg-red-50' : 'border-gray-300 hover:border-gray-400'
-                    }`}
-                    placeholder="システム開発について"
-                  />
-                  {errors.subject && (
-                    <motion.p
-                      initial={{ opacity: 0, y: -10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      className="mt-1 text-sm text-red-600"
-                    >
-                      {errors.subject.message}
-                    </motion.p>
-                  )}
-                </motion.div>
-
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 0.9 }}
-                  viewport={{ once: true }}
-                >
-                  <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
-                    お問い合わせ内容 <span className="text-red-600">*</span>
-                  </label>
-                  <textarea
-                    id="message"
-                    rows={6}
-                    {...register('message')}
-                    className={`w-full px-4 py-3 border rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 resize-none ${
-                      errors.message ? 'border-red-500 bg-red-50' : 'border-gray-300 hover:border-gray-400'
-                    }`}
-                    placeholder="お問い合わせ内容を詳しくお聞かせください..."
-                  />
-                  {errors.message && (
-                    <motion.p
-                      initial={{ opacity: 0, y: -10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      className="mt-1 text-sm text-red-600"
-                    >
-                      {errors.message.message}
-                    </motion.p>
-                  )}
-                </motion.div>
-
-                <motion.button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className="group w-full px-8 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
-                  whileHover={{ scale: isSubmitting ? 1 : 1.02, y: isSubmitting ? 0 : -2 }}
-                  whileTap={{ scale: isSubmitting ? 1 : 0.98 }}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: 1.0 }}
                   viewport={{ once: true }}
                 >
-                  {isSubmitting ? (
-                    <div className="flex items-center justify-center space-x-2">
-                      <LoadingSpinner size="sm" color="white" />
-                      <span>送信中...</span>
-                    </div>
-                  ) : (
-                    <div className="flex items-center justify-center space-x-2">
-                      <Send className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-200" />
-                      <span>お問い合わせを送信</span>
-                    </div>
-                  )}
-                </motion.button>
+                  <RealisticButton
+                    onClick={handleSubmit(onSubmit)}
+                    variant="primary"
+                    size="lg"
+                    disabled={isSubmitting}
+                    fullWidth
+                    icon={isSubmitting ? <LoadingSpinner size="sm" color="white" /> : <Send className="w-5 h-5" />}
+                  >
+                    {isSubmitting ? '送信中...' : 'お問い合わせを送信'}
+                  </RealisticButton>
+                </motion.div>
               </form>
             </div>
           </motion.div>
