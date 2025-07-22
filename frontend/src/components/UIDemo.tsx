@@ -235,7 +235,7 @@ export default function UIDemo() {
           >
             <div className="bg-gradient-to-br from-indigo-200 via-purple-200 to-violet-200 rounded-2xl shadow-soft p-8 border-2 border-indigo-400">
               <h2 className="text-2xl font-bold text-gray-900 mb-6">モーダルデモ</h2>
-              <div className="flex flex-wrap justify-center gap-4">
+              <div className="flex flex-row flex-wrap justify-center gap-4">
                 <RealisticButton
                   onClick={() => setIsModalOpen(true)}
                   variant="primary"
@@ -279,11 +279,11 @@ export default function UIDemo() {
           <div className="bg-blue-50 p-4 rounded-lg">
             <h3 className="font-semibold text-blue-900 mb-2">主な機能</h3>
             <ul className="text-blue-800 space-y-1">
-              <li>• スムーズなアニメーション</li>
-              <li>• キーボードナビゲーション対応</li>
-              <li>• スクロール制御</li>
-              <li>• レスポンシブデザイン</li>
-              <li>• アクセシビリティ対応</li>
+              <li> スムーズなアニメーション</li>
+              <li> キーボードナビゲーション対応</li>
+              <li> スクロール制御</li>
+              <li> レスポンシブデザイン</li>
+              <li> アクセシビリティ対応</li>
             </ul>
           </div>
         </div>

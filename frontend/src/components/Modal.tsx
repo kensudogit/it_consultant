@@ -154,7 +154,7 @@ interface ModalFooterProps {
 
 export function ModalFooter({ children, className = '' }: ModalFooterProps) {
   return (
-    <div className={`flex items-center justify-end space-x-3 pt-6 border-t border-blue-200 ${className}`}>
+    <div className={`flex flex-row items-center justify-end space-x-3 pt-6 border-t border-blue-200 ${className}`}>
       {children}
     </div>
   );

@@ -72,7 +72,7 @@ export default function Footer() {
                 className="w-14 h-14 bg-gradient-to-br from-blue-600 to-indigo-700 rounded-2xl flex items-center justify-center mr-4 shadow-lg"
                 whileHover={{ scale: 1.05, rotate: 5 }}
               >
-                <span className="text-white text-2xl font-bold">須</span>
+                <span className="text-white text-2xl font-bold"></span>
               </motion.div>
               <div>
                 <h3 className="text-2xl font-bold">須藤技術士事務所</h3>

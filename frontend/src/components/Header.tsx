@@ -119,9 +119,9 @@ export default function Header() {
               </div>
             </motion.div>
 
-            {/* デスクトップナビゲーション */}
+            {/* 洗練されたデスクトップナビゲーション */}
             <NavigationMenu.Root className="hidden lg:flex items-center">
-              <NavigationMenu.List className="flex items-center space-x-1">
+              <NavigationMenu.List className="flex items-center space-x-2">
                 {navigation.map((item, index) => (
                   <NavigationMenu.Item key={item.name}>
                     {item.submenu ? (
@@ -131,26 +131,41 @@ export default function Header() {
                             initial={{ opacity: 0, y: -20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.6, delay: 0.3 + index * 0.1 }}
-                            className="flex items-center space-x-1 text-gray-700 hover:text-blue-600 font-medium transition-all duration-300 px-4 py-2 rounded-xl hover:bg-blue-50 group"
+                            className="flex items-center space-x-2 text-gray-700 hover:text-white font-medium transition-all duration-300 px-6 py-3 rounded-2xl hover:bg-gradient-to-r hover:from-blue-600 hover:to-indigo-600 group relative overflow-hidden"
                           >
-                            <span>{item.name}</span>
-                            <ChevronDown className="w-4 h-4 transition-transform duration-200 group-data-[state=open]:rotate-180" />
+                            <span className="relative z-10">{item.name}</span>
+                            <ChevronDown className="w-4 h-4 transition-transform duration-200 group-data-[state=open]:rotate-180 relative z-10" />
+                            <motion.div
+                              className="absolute inset-0 bg-gradient-to-r from-blue-600 to-indigo-600 opacity-0 group-hover:opacity-100"
+                              initial={{ scale: 0.8 }}
+                              whileHover={{ scale: 1 }}
+                              transition={{ duration: 0.3 }}
+                            />
                           </motion.button>
                         </DropdownMenu.Trigger>
                         <DropdownMenu.Portal>
                           <DropdownMenu.Content
-                            className="min-w-[200px] bg-white rounded-xl shadow-xl border border-gray-100 p-2 mt-2"
-                            sideOffset={5}
+                            className="min-w-[240px] bg-white/95 backdrop-blur-xl rounded-2xl shadow-2xl border border-white/20 p-3 mt-3"
+                            sideOffset={8}
                           >
-                            {item.submenu.map((subItem) => (
+                            {item.submenu.map((subItem, subIndex) => (
                               <DropdownMenu.Item key={subItem.name} asChild>
-                                <button
+                                <motion.button
+                                  initial={{ opacity: 0, x: -20 }}
+                                  animate={{ opacity: 1, x: 0 }}
+                                  transition={{ duration: 0.3, delay: subIndex * 0.1 }}
                                   onClick={() => scrollToSection(subItem.href)}
-                                  className="flex items-center space-x-3 w-full text-left px-4 py-3 text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-all duration-200"
+                                  className="flex items-center space-x-4 w-full text-left px-4 py-4 text-gray-700 hover:text-white rounded-xl transition-all duration-300 group relative overflow-hidden"
                                 >
-                                  <span className="text-lg">{subItem.icon}</span>
-                                  <span>{subItem.name}</span>
-                                </button>
+                                  <motion.div
+                                    className="absolute inset-0 bg-gradient-to-r from-blue-600 to-indigo-600 opacity-0 group-hover:opacity-100"
+                                    initial={{ scale: 0.8 }}
+                                    whileHover={{ scale: 1 }}
+                                    transition={{ duration: 0.3 }}
+                                  />
+                                  <span className="text-xl relative z-10">{subItem.icon}</span>
+                                  <span className="font-medium relative z-10">{subItem.name}</span>
+                                </motion.button>
                               </DropdownMenu.Item>
                             ))}
                           </DropdownMenu.Content>
@@ -163,12 +178,18 @@ export default function Header() {
                           animate={{ opacity: 1, y: 0 }}
                           transition={{ duration: 0.6, delay: 0.3 + index * 0.1 }}
                           onClick={() => scrollToSection(item.href)}
-                          className="relative text-gray-700 hover:text-blue-600 font-medium transition-all duration-300 px-4 py-2 rounded-xl hover:bg-blue-50 group"
+                          className="relative text-gray-700 hover:text-white font-medium transition-all duration-300 px-6 py-3 rounded-2xl hover:bg-gradient-to-r hover:from-blue-600 hover:to-indigo-600 group overflow-hidden"
                         >
-                          {item.name}
+                          <span className="relative z-10">{item.name}</span>
+                          <motion.div
+                            className="absolute inset-0 bg-gradient-to-r from-blue-600 to-indigo-600 opacity-0 group-hover:opacity-100"
+                            initial={{ scale: 0.8 }}
+                            whileHover={{ scale: 1 }}
+                            transition={{ duration: 0.3 }}
+                          />
                           <motion.span 
-                            className="absolute bottom-0 left-1/2 w-0 h-0.5 bg-blue-600"
-                            whileHover={{ width: '100%', left: 0 }}
+                            className="absolute bottom-0 left-1/2 w-0 h-1 bg-white rounded-full"
+                            whileHover={{ width: '80%', left: '10%' }}
                             transition={{ duration: 0.3 }}
                           />
                         </motion.button>
@@ -179,7 +200,7 @@ export default function Header() {
               </NavigationMenu.List>
             </NavigationMenu.Root>
 
-            {/* CTAボタン */}
+            {/* 洗練されたCTAボタン */}
             <motion.div
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
@@ -188,11 +209,23 @@ export default function Header() {
             >
               <motion.button
                 onClick={handleContactClick}
-                className="btn-primary"
+                className="relative px-8 py-3 bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 text-white font-semibold rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group"
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
               >
-                お問い合わせ
+                <span className="relative z-10">お問い合わせ</span>
+                <motion.div
+                  className="absolute inset-0 bg-gradient-to-r from-blue-700 via-indigo-700 to-purple-700 opacity-0 group-hover:opacity-100"
+                  initial={{ scale: 0.8 }}
+                  whileHover={{ scale: 1 }}
+                  transition={{ duration: 0.3 }}
+                />
+                <motion.div
+                  className="absolute inset-0 bg-white/20 opacity-0 group-hover:opacity-100"
+                  initial={{ scale: 0.8 }}
+                  whileHover={{ scale: 1 }}
+                  transition={{ duration: 0.3, delay: 0.1 }}
+                />
               </motion.button>
             </motion.div>
 
@@ -227,31 +260,51 @@ export default function Header() {
                     </div>
                     
                     <div className="flex-1 overflow-y-auto p-6">
-                      <nav className="space-y-2">
-                        {navigation.map((item) => (
-                          <div key={item.name}>
+                      <nav className="grid grid-cols-1 gap-3">
+                        {navigation.map((item, index) => (
+                          <motion.div
+                            key={item.name}
+                            initial={{ opacity: 0, x: -20 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ duration: 0.3, delay: index * 0.1 }}
+                          >
                             {item.submenu ? (
                               <DropdownMenu.Root>
                                 <DropdownMenu.Trigger asChild>
-                                  <button className="flex items-center justify-between w-full text-left text-gray-700 hover:text-blue-600 font-medium py-3 px-4 rounded-xl hover:bg-blue-50 transition-all duration-300">
-                                    <span>{item.name}</span>
-                                    <ChevronDown className="w-4 h-4" />
+                                  <button className="flex items-center justify-between w-full text-left text-gray-700 hover:text-white font-medium py-4 px-6 rounded-2xl hover:bg-gradient-to-r hover:from-blue-600 hover:to-indigo-600 transition-all duration-300 group relative overflow-hidden">
+                                    <span className="relative z-10">{item.name}</span>
+                                    <ChevronDown className="w-4 h-4 relative z-10" />
+                                    <motion.div
+                                      className="absolute inset-0 bg-gradient-to-r from-blue-600 to-indigo-600 opacity-0 group-hover:opacity-100"
+                                      initial={{ scale: 0.8 }}
+                                      whileHover={{ scale: 1 }}
+                                      transition={{ duration: 0.3 }}
+                                    />
                                   </button>
                                 </DropdownMenu.Trigger>
                                 <DropdownMenu.Portal>
                                   <DropdownMenu.Content
-                                    className="min-w-[200px] bg-white rounded-xl shadow-xl border border-gray-100 p-2"
+                                    className="min-w-[240px] bg-white/95 backdrop-blur-xl rounded-2xl shadow-2xl border border-white/20 p-3"
                                     sideOffset={5}
                                   >
-                                    {item.submenu.map((subItem) => (
+                                    {item.submenu.map((subItem, subIndex) => (
                                       <DropdownMenu.Item key={subItem.name} asChild>
-                                        <button
+                                        <motion.button
+                                          initial={{ opacity: 0, x: -20 }}
+                                          animate={{ opacity: 1, x: 0 }}
+                                          transition={{ duration: 0.3, delay: subIndex * 0.1 }}
                                           onClick={() => scrollToSection(subItem.href)}
-                                          className="flex items-center space-x-3 w-full text-left px-4 py-3 text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-all duration-200"
+                                          className="flex items-center space-x-4 w-full text-left px-4 py-4 text-gray-700 hover:text-white rounded-xl transition-all duration-300 group relative overflow-hidden"
                                         >
-                                          <span className="text-lg">{subItem.icon}</span>
-                                          <span>{subItem.name}</span>
-                                        </button>
+                                          <motion.div
+                                            className="absolute inset-0 bg-gradient-to-r from-blue-600 to-indigo-600 opacity-0 group-hover:opacity-100"
+                                            initial={{ scale: 0.8 }}
+                                            whileHover={{ scale: 1 }}
+                                            transition={{ duration: 0.3 }}
+                                          />
+                                          <span className="text-xl relative z-10">{subItem.icon}</span>
+                                          <span className="font-medium relative z-10">{subItem.name}</span>
+                                        </motion.button>
                                       </DropdownMenu.Item>
                                     ))}
                                   </DropdownMenu.Content>
@@ -260,23 +313,41 @@ export default function Header() {
                             ) : (
                               <button
                                 onClick={() => scrollToSection(item.href)}
-                                className="block w-full text-left text-gray-700 hover:text-blue-600 font-medium py-3 px-4 rounded-xl hover:bg-blue-50 transition-all duration-300"
+                                className="block w-full text-left text-gray-700 hover:text-white font-medium py-4 px-6 rounded-2xl hover:bg-gradient-to-r hover:from-blue-600 hover:to-indigo-600 transition-all duration-300 group relative overflow-hidden"
                               >
-                                {item.name}
+                                <span className="relative z-10">{item.name}</span>
+                                <motion.div
+                                  className="absolute inset-0 bg-gradient-to-r from-blue-600 to-indigo-600 opacity-0 group-hover:opacity-100"
+                                  initial={{ scale: 0.8 }}
+                                  whileHover={{ scale: 1 }}
+                                  transition={{ duration: 0.3 }}
+                                />
                               </button>
                             )}
-                          </div>
+                          </motion.div>
                         ))}
                       </nav>
                       
                       <div className="mt-8 pt-6 border-t border-gray-200">
                         <motion.button
                           onClick={handleContactClick}
-                          className="w-full px-6 py-3 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-semibold rounded-xl hover:from-blue-700 hover:to-indigo-700 transition-all duration-300 shadow-lg"
+                          className="relative w-full px-6 py-4 bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 text-white font-semibold rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group"
                           whileHover={{ scale: 1.02 }}
                           whileTap={{ scale: 0.98 }}
                         >
-                          お問い合わせ
+                          <span className="relative z-10">お問い合わせ</span>
+                          <motion.div
+                            className="absolute inset-0 bg-gradient-to-r from-blue-700 via-indigo-700 to-purple-700 opacity-0 group-hover:opacity-100"
+                            initial={{ scale: 0.8 }}
+                            whileHover={{ scale: 1 }}
+                            transition={{ duration: 0.3 }}
+                          />
+                          <motion.div
+                            className="absolute inset-0 bg-white/20 opacity-0 group-hover:opacity-100"
+                            initial={{ scale: 0.8 }}
+                            whileHover={{ scale: 1 }}
+                            transition={{ duration: 0.3, delay: 0.1 }}
+                          />
                         </motion.button>
                       </div>
                     </div>

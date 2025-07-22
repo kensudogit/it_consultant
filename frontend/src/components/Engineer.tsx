@@ -17,7 +17,7 @@ export default function Engineer() {
             <div className="card">
               <div className="text-center mb-8">
                 <div className="w-32 h-32 bg-primary-600 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <span className="text-white text-4xl font-bold">須</span>
+                  <span className="text-white text-4xl font-bold"></span>
                 </div>
                 <h3 className="heading-2 mb-2">須藤 技術士</h3>
                 <p className="text-primary-600 font-semibold">技術士（情報工学部門）</p>
@@ -48,37 +48,37 @@ export default function Engineer() {
                     <div>
                       <h5 className="font-semibold text-gray-900 mb-2">バックエンド</h5>
                       <ul className="text-sm text-gray-600 space-y-1">
-                        <li>• Java / Spring Boot</li>
-                        <li>• Python / Django</li>
-                        <li>• Node.js / Express</li>
-                        <li>• PostgreSQL / MySQL</li>
+                        <li> Java / Spring Boot</li>
+                        <li> Python / Django</li>
+                        <li> Node.js / Express</li>
+                        <li> PostgreSQL / MySQL</li>
                       </ul>
                     </div>
                     <div>
                       <h5 className="font-semibold text-gray-900 mb-2">フロントエンド</h5>
                       <ul className="text-sm text-gray-600 space-y-1">
-                        <li>• React / Next.js</li>
-                        <li>• TypeScript</li>
-                        <li>• Tailwind CSS</li>
-                        <li>• Vue.js</li>
+                        <li> React / Next.js</li>
+                        <li> TypeScript</li>
+                        <li> Tailwind CSS</li>
+                        <li> Vue.js</li>
                       </ul>
                     </div>
                     <div>
                       <h5 className="font-semibold text-gray-900 mb-2">インフラ・ツール</h5>
                       <ul className="text-sm text-gray-600 space-y-1">
-                        <li>• Docker / Kubernetes</li>
-                        <li>• AWS / Azure</li>
-                        <li>• Git / GitHub</li>
-                        <li>• CI/CD</li>
+                        <li> Docker / Kubernetes</li>
+                        <li> AWS / Azure</li>
+                        <li> Git / GitHub</li>
+                        <li> CI/CD</li>
                       </ul>
                     </div>
                     <div>
                       <h5 className="font-semibold text-gray-900 mb-2">その他</h5>
                       <ul className="text-sm text-gray-600 space-y-1">
-                        <li>• プロジェクト管理</li>
-                        <li>• 要件定義</li>
-                        <li>• テスト設計</li>
-                        <li>• 技術文書作成</li>
+                        <li> プロジェクト管理</li>
+                        <li> 要件定義</li>
+                        <li> テスト設計</li>
+                        <li> 技術文書作成</li>
                       </ul>
                     </div>
                   </div>

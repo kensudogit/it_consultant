@@ -34,12 +34,12 @@ export const RealisticPrimaryButton: React.FC<ButtonProps> = ({
       disabled={disabled}
       className={`
         relative overflow-hidden rounded-xl font-semibold text-white
-        bg-gradient-to-br from-blue-600 via-blue-700 to-indigo-800
-        shadow-[0_4px_15px_rgba(59,130,246,0.4),0_2px_4px_rgba(0,0,0,0.1)]
-        border border-blue-500/30
+        bg-gradient-to-br from-blue-800 via-blue-900 to-blue-950
+        shadow-[0_4px_15px_rgba(30,58,138,0.4),0_2px_4px_rgba(0,0,0,0.1)]
+        border border-blue-700/30
         ${sizeClasses[size]}
         ${fullWidth ? 'w-full' : ''}
-        ${disabled ? 'opacity-50 cursor-not-allowed' : 'hover:shadow-[0_6px_20px_rgba(59,130,246,0.5),0_4px_8px_rgba(0,0,0,0.15)]'}
+        ${disabled ? 'opacity-50 cursor-not-allowed' : 'hover:shadow-[0_6px_20px_rgba(30,58,138,0.5),0_4px_8px_rgba(0,0,0,0.15)] cursor-pointer focus:cursor-pointer focus-visible:cursor-pointer'}
         ${className}
       `}
       whileHover={!disabled ? { 
@@ -89,14 +89,13 @@ export const RealisticSecondaryButton: React.FC<ButtonProps> = ({
       onClick={onClick}
       disabled={disabled}
       className={`
-        relative overflow-hidden rounded-xl font-semibold
-        bg-white/80 backdrop-blur-sm
-        border-2 border-gray-200/50
-        shadow-[0_4px_15px_rgba(0,0,0,0.1),inset_0_1px_0_rgba(255,255,255,0.8)]
-        text-gray-700
+        relative overflow-hidden rounded-xl font-semibold text-white
+        bg-gradient-to-br from-blue-700 via-blue-800 to-blue-900
+        shadow-[0_4px_15px_rgba(30,58,138,0.4),0_2px_4px_rgba(0,0,0,0.1)]
+        border border-blue-600/30
         ${sizeClasses[size]}
         ${fullWidth ? 'w-full' : ''}
-        ${disabled ? 'opacity-50 cursor-not-allowed' : 'hover:bg-white/90 hover:border-gray-300/60'}
+        ${disabled ? 'opacity-50 cursor-not-allowed' : 'hover:shadow-[0_6px_20px_rgba(30,58,138,0.5),0_4px_8px_rgba(0,0,0,0.15)] cursor-pointer focus:cursor-pointer focus-visible:cursor-pointer'}
         ${className}
       `}
       whileHover={!disabled ? { 
@@ -144,12 +143,12 @@ export const RealisticSuccessButton: React.FC<ButtonProps> = ({
       disabled={disabled}
       className={`
         relative overflow-hidden rounded-xl font-semibold text-white
-        bg-gradient-to-br from-emerald-500 via-emerald-600 to-teal-700
-        shadow-[0_4px_15px_rgba(16,185,129,0.4),0_2px_4px_rgba(0,0,0,0.1)]
-        border border-emerald-400/30
+        bg-gradient-to-br from-blue-800 via-blue-900 to-blue-950
+        shadow-[0_4px_15px_rgba(30,58,138,0.4),0_2px_4px_rgba(0,0,0,0.1)]
+        border border-blue-700/30
         ${sizeClasses[size]}
         ${fullWidth ? 'w-full' : ''}
-        ${disabled ? 'opacity-50 cursor-not-allowed' : 'hover:shadow-[0_6px_20px_rgba(16,185,129,0.5),0_4px_8px_rgba(0,0,0,0.15)]'}
+        ${disabled ? 'opacity-50 cursor-not-allowed' : 'hover:shadow-[0_6px_20px_rgba(30,58,138,0.5),0_4px_8px_rgba(0,0,0,0.15)] cursor-pointer focus:cursor-pointer focus-visible:cursor-pointer'}
         ${className}
       `}
       whileHover={!disabled ? { 
@@ -200,12 +199,12 @@ export const RealisticWarningButton: React.FC<ButtonProps> = ({
       disabled={disabled}
       className={`
         relative overflow-hidden rounded-xl font-semibold text-white
-        bg-gradient-to-br from-amber-500 via-yellow-600 to-orange-600
-        shadow-[0_4px_15px_rgba(245,158,11,0.4),0_2px_4px_rgba(0,0,0,0.1)]
-        border border-amber-400/30
+        bg-gradient-to-br from-blue-800 via-blue-900 to-blue-950
+        shadow-[0_4px_15px_rgba(30,58,138,0.4),0_2px_4px_rgba(0,0,0,0.1)]
+        border border-blue-700/30
         ${sizeClasses[size]}
         ${fullWidth ? 'w-full' : ''}
-        ${disabled ? 'opacity-50 cursor-not-allowed' : 'hover:shadow-[0_6px_20px_rgba(245,158,11,0.5),0_4px_8px_rgba(0,0,0,0.15)]'}
+        ${disabled ? 'opacity-50 cursor-not-allowed' : 'hover:shadow-[0_6px_20px_rgba(30,58,138,0.5),0_4px_8px_rgba(0,0,0,0.15)] cursor-pointer focus:cursor-pointer focus-visible:cursor-pointer'}
         ${className}
       `}
       whileHover={!disabled ? { 
@@ -256,12 +255,12 @@ export const RealisticDangerButton: React.FC<ButtonProps> = ({
       disabled={disabled}
       className={`
         relative overflow-hidden rounded-xl font-semibold text-white
-        bg-gradient-to-br from-red-500 via-red-600 to-rose-700
-        shadow-[0_4px_15px_rgba(239,68,68,0.4),0_2px_4px_rgba(0,0,0,0.1)]
-        border border-red-400/30
+        bg-gradient-to-br from-blue-800 via-blue-900 to-blue-950
+        shadow-[0_4px_15px_rgba(30,58,138,0.4),0_2px_4px_rgba(0,0,0,0.1)]
+        border border-blue-700/30
         ${sizeClasses[size]}
         ${fullWidth ? 'w-full' : ''}
-        ${disabled ? 'opacity-50 cursor-not-allowed' : 'hover:shadow-[0_6px_20px_rgba(239,68,68,0.5),0_4px_8px_rgba(0,0,0,0.15)]'}
+        ${disabled ? 'opacity-50 cursor-not-allowed' : 'hover:shadow-[0_6px_20px_rgba(30,58,138,0.5),0_4px_8px_rgba(0,0,0,0.15)] cursor-pointer focus:cursor-pointer focus-visible:cursor-pointer'}
         ${className}
       `}
       whileHover={!disabled ? { 
@@ -312,12 +311,12 @@ export const RealisticInfoButton: React.FC<ButtonProps> = ({
       disabled={disabled}
       className={`
         relative overflow-hidden rounded-xl font-semibold text-white
-        bg-gradient-to-br from-cyan-500 via-blue-600 to-indigo-700
-        shadow-[0_4px_15px_rgba(6,182,212,0.4),0_2px_4px_rgba(0,0,0,0.1)]
-        border border-cyan-400/30
+        bg-gradient-to-br from-blue-800 via-blue-900 to-blue-950
+        shadow-[0_4px_15px_rgba(30,58,138,0.4),0_2px_4px_rgba(0,0,0,0.1)]
+        border border-blue-700/30
         ${sizeClasses[size]}
         ${fullWidth ? 'w-full' : ''}
-        ${disabled ? 'opacity-50 cursor-not-allowed' : 'hover:shadow-[0_6px_20px_rgba(6,182,212,0.5),0_4px_8px_rgba(0,0,0,0.15)]'}
+        ${disabled ? 'opacity-50 cursor-not-allowed' : 'hover:shadow-[0_6px_20px_rgba(30,58,138,0.5),0_4px_8px_rgba(0,0,0,0.15)] cursor-pointer focus:cursor-pointer focus-visible:cursor-pointer'}
         ${className}
       `}
       whileHover={!disabled ? { 
