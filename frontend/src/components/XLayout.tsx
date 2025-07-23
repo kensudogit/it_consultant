@@ -217,7 +217,7 @@ export default function XLayout({ children }: XLayoutProps) {
                   </div>
                   <div className="flex items-center space-x-3">
                     <Mail className={`w-5 h-5 ${commonStyles.textGray300}`} />
-                    <span className={commonStyles.textWhite}>info@sudo-engineering.com</span>
+                    <span className={commonStyles.textWhite}>kensudo@kensudo.jp</span>
                   </div>
                   <div className="flex items-center space-x-3">
                     <MapPin className={`w-5 h-5 ${commonStyles.textGray300}`} />

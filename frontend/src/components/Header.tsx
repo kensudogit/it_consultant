@@ -77,7 +77,7 @@ export default function Header() {
               </div>
               <div className="flex items-center space-x-2">
                 <Mail className="w-4 h-4" />
-                <span>info@sudo-engineering.com</span>
+                <span>kensudo@kensudo.jp</span>
               </div>
             </div>
             <div className="hidden md:flex items-center space-x-2">

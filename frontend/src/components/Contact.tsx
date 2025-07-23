@@ -89,7 +89,7 @@ export default function Contact() {
     {
       icon: <Mail className="w-6 h-6" />,
       title: 'メールアドレス',
-              content: 'info@sudo-engineering.com',
+              content: 'kensudo@kensudo.jp',
       color: 'purple'
     },
     {

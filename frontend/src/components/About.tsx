@@ -41,7 +41,7 @@ export default function About() {
     { label: '代表者', value: '須藤 技術士（情報工学部門）', icon: <BusinessUserIcon className="w-5 h-5" /> },
     { label: '所在地', value: '〒150-0002\n東京都渋谷区渋谷2-1-1', icon: <MapPin className="w-5 h-5" /> },
     { label: '電話番号', value: '03-1234-5678', icon: <Phone className="w-5 h-5" /> },
-            { label: 'メールアドレス', value: 'info@sudo-engineering.com', icon: <Mail className="w-5 h-5" /> },
+            { label: 'メールアドレス', value: 'kensudo@kensudo.jp', icon: <Mail className="w-5 h-5" /> },
     { label: '資格', value: '技術士（情報工学部門）', icon: <EngineerIcon className="w-5 h-5" /> }
   ];
 

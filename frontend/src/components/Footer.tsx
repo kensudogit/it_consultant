@@ -113,7 +113,7 @@ export default function Footer() {
                 viewport={{ once: true }}
               >
                 <Mail className="w-4 h-4 text-blue-400" />
-                <span>Email: info@sudo-engineering.com</span>
+                <span>Email: kensudo@kensudo.jp</span>
               </motion.div>
             </div>
           </motion.div>
