@@ -31,7 +31,7 @@
 
   html {
     scroll-behavior: smooth;
-    font-size: 0.9rem;
+    font-size: 1rem;
     color: white;
     background: #0f1419;
     min-height: 100vh;
@@ -44,7 +44,7 @@
 
   body {
     font-family: var(--font-noto-sans-jp), var(--font-inter), sans-serif;
-    font-size: 0.9rem;
+    font-size: 1rem;
     line-height: 1.6;
     color: white;
     -webkit-font-smoothing: antialiased;
@@ -91,19 +91,19 @@
 @layer components {
   /* 洗練されたボタンスタイル */
   .btn-primary {
-    @apply bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-semibold text-sm py-4 px-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transform hover:-translate-y-1;
+    @apply bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-semibold text-base py-4 px-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transform hover:-translate-y-1;
   }
 
   .btn-secondary {
-    @apply bg-gradient-to-r from-gray-50 to-gray-100 hover:from-gray-100 hover:to-gray-200 text-gray-900 font-semibold text-sm py-4 px-8 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 transform hover:-translate-y-1;
+    @apply bg-gradient-to-r from-gray-50 to-gray-100 hover:from-gray-100 hover:to-gray-200 text-gray-900 font-semibold text-base py-4 px-8 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 transform hover:-translate-y-1;
   }
 
   .btn-outline {
-    @apply border-2 border-blue-600 text-blue-600 hover:bg-gradient-to-r hover:from-blue-600 hover:to-indigo-600 hover:text-white font-semibold text-sm py-4 px-8 rounded-xl transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transform hover:-translate-y-1 shadow-md hover:shadow-lg;
+    @apply border-2 border-blue-600 text-blue-600 hover:bg-gradient-to-r hover:from-blue-600 hover:to-indigo-600 hover:text-white font-semibold text-base py-4 px-8 rounded-xl transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transform hover:-translate-y-1 shadow-md hover:shadow-lg;
   }
 
   .btn-accent {
-    @apply bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-semibold text-sm py-4 px-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 transform hover:-translate-y-1;
+    @apply bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-semibold text-base py-4 px-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 transform hover:-translate-y-1;
   }
 
   /* 洗練されたカードスタイル */
@@ -125,19 +125,19 @@
 
   /* 洗練されたフォームスタイル */
   .form-input {
-    @apply w-full px-6 py-4 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-300 bg-white/90 backdrop-blur-sm shadow-soft focus:shadow-medium text-sm text-gray-900;
+    @apply w-full px-6 py-4 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-300 bg-white/90 backdrop-blur-sm shadow-soft focus:shadow-medium text-base text-gray-900;
   }
 
   .form-textarea {
-    @apply w-full px-6 py-4 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-300 bg-white/90 backdrop-blur-sm shadow-soft focus:shadow-medium resize-none text-sm text-gray-900;
+    @apply w-full px-6 py-4 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-300 bg-white/90 backdrop-blur-sm shadow-soft focus:shadow-medium resize-none text-base text-gray-900;
   }
 
   .form-select {
-    @apply w-full px-6 py-4 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-300 bg-white/90 backdrop-blur-sm shadow-soft focus:shadow-medium text-sm text-gray-900;
+    @apply w-full px-6 py-4 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-300 bg-white/90 backdrop-blur-sm shadow-soft focus:shadow-medium text-base text-gray-900;
   }
 
   .form-label {
-    @apply block text-xs font-semibold text-white mb-2;
+    @apply block text-sm font-semibold text-white mb-2;
   }
 
   .form-error {
@@ -171,11 +171,11 @@
   }
 
   .body-large {
-    @apply text-base lg:text-lg text-white leading-relaxed;
+    @apply text-lg lg:text-xl text-white leading-relaxed;
   }
 
   .body-medium {
-    @apply text-sm text-white leading-relaxed;
+    @apply text-base text-white leading-relaxed;
   }
 
   /* 洗練されたアニメーション */
@@ -564,28 +564,7 @@
     filter: contrast(1.2) brightness(0.9) blur(8px);
   }
 
-  /* 背景画像専用の高品質表示 */
-  .high-quality-background {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: url('/src/assets/images/tech-background.png') no-repeat center center;
-    background-size: cover;
-    filter: contrast(1.05) brightness(1.02) saturate(1.1);
-    z-index: -1;
-    image-rendering: -webkit-optimize-contrast;
-    image-rendering: auto;
-    image-rendering: smooth;
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
-    transform: translateZ(0);
-    -webkit-transform: translateZ(0);
-    will-change: transform;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
+
 
   /* スクロールスナップ */
   .scroll-smooth {

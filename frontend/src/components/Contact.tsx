@@ -83,13 +83,13 @@ export default function Contact() {
     {
       icon: <Phone className="w-6 h-6" />,
       title: '電話番号',
-      content: '03-1234-5678',
+      content: '',
       color: 'green'
     },
     {
       icon: <Mail className="w-6 h-6" />,
       title: 'メールアドレス',
-      content: 'info@sudou-engineering.com',
+              content: 'info@sudo-engineering.com',
       color: 'purple'
     },
     {
@@ -366,7 +366,7 @@ export default function Contact() {
                           type="tel"
                           {...register('phone')}
                           className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 hover:border-gray-400"
-                          placeholder="03-1234-5678"
+                          placeholder=""
                         />
                       </div>
                     </motion.div>

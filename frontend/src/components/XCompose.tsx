@@ -16,7 +16,7 @@ interface XComposeProps {
 }
 
 export default function XCompose({ onPost }: XComposeProps) {
-  const [content, setContent] = useState('');
+  const [content, setContent] = useState('これは非常に長いテキストです。\n\n'.repeat(50) + '横方向にも長いテキストを追加してスクロールバーを表示するためのサンプルテキストです。これは非常に長い文章で、横スクロールバーを確実に表示させるために必要な長さです。'.repeat(20));
   const [isExpanded, setIsExpanded] = useState(false);
   const maxLength = 280;
 
@@ -49,21 +49,35 @@ export default function XCompose({ onPost }: XComposeProps) {
         {/* アバター */}
         <div className="flex-shrink-0">
           <div className="w-12 h-12 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full flex items-center justify-center text-white font-bold text-lg">
-            
+            👨‍💼
           </div>
         </div>
 
         {/* 投稿エリア */}
-        <div className="flex-1 min-w-0">
-          <div className="relative">
+        <div className="flex-1 min-w-0 overflow-auto">
+          <div className="relative" style={{ width: '500px' }}>
                          <textarea
                value={content}
                onChange={(e) => setContent(e.target.value)}
                onKeyPress={handleKeyPress}
                onFocus={() => setIsExpanded(true)}
                placeholder="いまどうしてる？"
-               className="w-full min-h-[120px] p-0 border-none resize-none focus:ring-0 focus:outline-none text-lg text-white placeholder-gray-300"
-               style={{ fontFamily: 'inherit' }}
+               className="p-4 border-2 border-gray-800 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none text-lg text-white placeholder-gray-300 bg-white"
+               style={{ 
+                 fontFamily: 'inherit',
+                 width: '500px',
+                 height: '200px',
+                 minWidth: '300px',
+                 maxWidth: '800px',
+                 minHeight: '100px',
+                 maxHeight: '500px',
+                 overflow: 'scroll',
+                 resize: 'both',
+                 whiteSpace: 'pre-wrap',
+                 wordWrap: 'break-word',
+                 display: 'block'
+               }}
+               rows={5}
              />
           </div>
 

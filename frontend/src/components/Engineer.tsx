@@ -1,4 +1,43 @@
+import { useState, useEffect } from 'react';
+
 export default function Engineer() {
+  const [currentSlide, setCurrentSlide] = useState(0);
+  
+  const achievements = [
+    {
+      title: "製造業向け統合システム",
+      description: "年間売上100億円規模の製造業向けに、生産管理・在庫管理・販売管理を統合したシステムを構築。生産性向上30%、コスト削減20%を実現。"
+    },
+    {
+      title: "金融機関向けリスク管理システム",
+      description: "大手銀行向けに、複雑な金融商品のリスク評価システムを開発。リアルタイム監視と自動アラート機能により、リスク管理の効率化を実現。"
+    },
+    {
+      title: "スタートアップ向け技術指導",
+      description: "複数のスタートアップ企業に対して技術指導を実施。開発チームの技術力向上とプロダクト品質向上に貢献。"
+    }
+  ];
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % achievements.length);
+    }, 5000);
+
+    return () => clearInterval(timer);
+  }, [achievements.length]);
+
+  const goToSlide = (index: number) => {
+    setCurrentSlide(index);
+  };
+
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % achievements.length);
+  };
+
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev - 1 + achievements.length) % achievements.length);
+  };
+
   return (
     <section id="engineer" className="section-padding bg-white">
       <div className="container-max">
@@ -41,6 +80,20 @@ export default function Engineer() {
                     ))}
                   </div>
                 </div>
+
+                <div className="flex justify-center mt-4">
+                    <a 
+                      href="https://github.com/kensudogit/it_consultant" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center space-x-3 px-6 py-3 bg-gray-900 hover:bg-gray-800 text-white font-medium rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+                    >
+                      <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                      </svg>
+                      <span>GitHubリポジトリを確認</span>
+                    </a>
+                  </div>
 
                 <div>
                   <h4 className="heading-3 mb-3">技術スタック</h4>
@@ -151,27 +204,74 @@ export default function Engineer() {
 
               <div>
                 <h4 className="heading-3 mb-4">主な実績</h4>
-                <div className="space-y-4">
-                  <div className="card">
-                    <h5 className="font-semibold text-gray-900 mb-2">製造業向け統合システム</h5>
-                    <p className="text-sm text-gray-600">
-                      年間売上100億円規模の製造業向けに、生産管理・在庫管理・販売管理を統合したシステムを構築。
-                      生産性向上30%、コスト削減20%を実現。
-                    </p>
+                <div className="relative">
+                  {/* スライダーコンテナ */}
+                  <div className="overflow-hidden rounded-xl">
+                    <div 
+                      className="flex transition-transform duration-500 ease-in-out"
+                      style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+                    >
+                      {achievements.map((achievement, index) => (
+                        <div key={index} className="w-full flex-shrink-0">
+                          <div className="card mx-2">
+                            <h5 className="font-semibold text-gray-900 mb-2">{achievement.title}</h5>
+                            <p className="text-sm text-gray-700">{achievement.description}</p>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
                   </div>
-                  <div className="card">
-                    <h5 className="font-semibold text-gray-900 mb-2">金融機関向けリスク管理システム</h5>
-                    <p className="text-sm text-gray-600">
-                      大手銀行向けに、複雑な金融商品のリスク評価システムを開発。
-                      リアルタイム監視と自動アラート機能により、リスク管理の効率化を実現。
-                    </p>
+
+                  {/* ナビゲーションボタン */}
+                  <button
+                    onClick={prevSlide}
+                    className="absolute left-0 top-1/2 transform -translate-y-1/2 -translate-x-4 bg-white hover:bg-gray-50 text-gray-600 hover:text-gray-900 p-2 rounded-full shadow-lg transition-all duration-300 z-10"
+                    aria-label="前の実績"
+                  >
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                    </svg>
+                  </button>
+                  
+                  <button
+                    onClick={nextSlide}
+                    className="absolute right-0 top-1/2 transform -translate-y-1/2 translate-x-4 bg-white hover:bg-gray-50 text-gray-600 hover:text-gray-900 p-2 rounded-full shadow-lg transition-all duration-300 z-10"
+                    aria-label="次の実績"
+                  >
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    </svg>
+                  </button>
+
+                  {/* ドットインジケーター */}
+                  <div className="flex justify-center mt-6 space-x-2">
+                    {achievements.map((_, index) => (
+                      <button
+                        key={index}
+                        onClick={() => goToSlide(index)}
+                        className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                          index === currentSlide 
+                            ? 'bg-primary-600 scale-110' 
+                            : 'bg-gray-300 hover:bg-gray-400'
+                        }`}
+                        aria-label={`実績 ${index + 1} に移動`}
+                      />
+                    ))}
                   </div>
-                  <div className="card">
-                    <h5 className="font-semibold text-gray-900 mb-2">スタートアップ向け技術指導</h5>
-                    <p className="text-sm text-gray-600">
-                      複数のスタートアップ企業に対して技術指導を実施。
-                      開発チームの技術力向上とプロダクト品質向上に貢献。
-                    </p>
+
+                  {/* GitHubボタン */}
+                  <div className="flex justify-center mt-6">
+                    <a 
+                      href="https://github.com/kensudogit/it_consultant" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center space-x-3 px-6 py-3 bg-gray-900 hover:bg-gray-800 text-white font-medium rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+                    >
+                      <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                      </svg>
+                      <span>GitHubリポジトリを確認</span>
+                    </a>
                   </div>
                 </div>
               </div>

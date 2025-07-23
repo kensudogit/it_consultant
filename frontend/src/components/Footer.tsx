@@ -79,14 +79,14 @@ export default function Footer() {
                 <p className="text-blue-300 font-medium">情報工学部門</p>
               </div>
             </div>
-            <p className="text-gray-300 mb-8 leading-relaxed">
+            <p className="text-gray-300 mb-8 leading-relaxed text-base">
               情報工学部門の技術士として、お客様のビジネス課題を技術的視点から解決いたします。
               システム設計・開発・コンサルティングを通じて、お客様の成功をサポートします。
             </p>
             
             <div className="space-y-3">
               <motion.div 
-                className="flex items-center space-x-3 text-gray-300"
+                className="flex items-center space-x-3 text-gray-300 text-base"
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.6, delay: 0.2 }}
@@ -96,24 +96,24 @@ export default function Footer() {
                 <span>〒150-0002 東京都渋谷区渋谷2-1-1</span>
               </motion.div>
               <motion.div 
-                className="flex items-center space-x-3 text-gray-300"
+                className="flex items-center space-x-3 text-gray-300 text-base"
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.6, delay: 0.3 }}
                 viewport={{ once: true }}
               >
                 <Phone className="w-4 h-4 text-blue-400" />
-                <span>TEL: 03-1234-5678</span>
+                <span></span>
               </motion.div>
               <motion.div 
-                className="flex items-center space-x-3 text-gray-300"
+                className="flex items-center space-x-3 text-gray-300 text-base"
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.6, delay: 0.4 }}
                 viewport={{ once: true }}
               >
                 <Mail className="w-4 h-4 text-blue-400" />
-                <span>Email: info@sudou-engineering.com</span>
+                <span>Email: info@sudo-engineering.com</span>
               </motion.div>
             </div>
           </motion.div>
@@ -140,7 +140,7 @@ export default function Footer() {
                 >
                   <motion.button
                     onClick={() => handleSectionClick(service.href)}
-                    className="flex items-center space-x-2 text-gray-300 hover:text-white transition-all duration-300 group"
+                    className="flex items-center space-x-2 text-gray-300 hover:text-white transition-all duration-300 group text-base"
                     whileHover={{ x: 4 }}
                   >
                     <span className="text-blue-400 group-hover:scale-110 transition-transform duration-300">
@@ -175,7 +175,7 @@ export default function Footer() {
                 >
                   <motion.button
                     onClick={() => handleSectionClick(link.href)}
-                    className="flex items-center space-x-2 text-gray-300 hover:text-white transition-all duration-300 group"
+                    className="flex items-center space-x-2 text-gray-300 hover:text-white transition-all duration-300 group text-base"
                     whileHover={{ x: 4 }}
                   >
                     <span className="text-blue-400 group-hover:scale-110 transition-transform duration-300">
@@ -212,7 +212,7 @@ export default function Footer() {
                 whileInView={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.6, delay: 0.5 + index * 0.05 }}
                 viewport={{ once: true }}
-                className="px-4 py-2 bg-gray-800 hover:bg-gray-700 rounded-full text-sm text-gray-300 hover:text-white transition-all duration-300 cursor-pointer"
+                className="px-4 py-2 bg-gray-800 hover:bg-gray-700 rounded-full text-base text-gray-300 hover:text-white transition-all duration-300 cursor-pointer"
                 whileHover={{ scale: 1.05, y: -2 }}
               >
                 {tech}
@@ -229,10 +229,10 @@ export default function Footer() {
           transition={{ duration: 0.6, delay: 0.6 }}
           viewport={{ once: true }}
         >
-          <p className="text-gray-400 text-sm">
+          <p className="text-gray-400 text-base">
             © {currentYear} 須藤技術士事務所. All rights reserved.
           </p>
-          <p className="text-gray-500 text-xs mt-2">
+          <p className="text-gray-500 text-sm mt-2">
             技術士（情報工学部門）須藤技術士事務所
           </p>
         </motion.div>

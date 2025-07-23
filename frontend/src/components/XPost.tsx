@@ -75,7 +75,7 @@ export default function XPost({
         {/* アバター */}
         <div className="flex-shrink-0">
           <div className="w-12 h-12 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full flex items-center justify-center text-white font-bold text-lg">
-            {author.avatar}
+            {author.avatar || author.name.charAt(0)}
           </div>
         </div>
 
@@ -84,11 +84,7 @@ export default function XPost({
                      {/* ヘッダー */}
            <div className="flex items-center space-x-2 mb-1">
              <span className="font-semibold text-white">{author.name}</span>
-             {author.verified && (
-               <div className="w-4 h-4 bg-blue-500 rounded-full flex items-center justify-center">
-                 <span className="text-white text-xs">✓</span>
-               </div>
-             )}
+
              <span className="text-gray-300">@{author.handle}</span>
              <span className="text-gray-300">·</span>
              <span className="text-gray-300">{timestamp}</span>

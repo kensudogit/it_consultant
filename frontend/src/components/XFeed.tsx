@@ -31,8 +31,8 @@ export default function XFeed() {
     {
       id: '1',
       author: {
-        name: '須藤技術士',
-        handle: 'sudou_engineer',
+        name: '須藤技術士事務所',
+        handle: 'sudo_engineer',
         avatar: '',
         verified: true
       },
@@ -49,8 +49,8 @@ export default function XFeed() {
     {
       id: '2',
       author: {
-        name: '須藤技術士',
-        handle: 'sudou_engineer',
+        name: '須藤技術士事務所',
+        handle: 'sudo_engineer',
         avatar: '',
         verified: true
       },
@@ -67,9 +67,9 @@ export default function XFeed() {
     {
       id: '3',
       author: {
-        name: '須藤技術士',
-        handle: 'sudou_engineer',
-        avatar: '',
+        name: '須藤技術士事務所',
+        handle: 'sudo_engineer',
+        avatar: '👨‍💼',
         verified: true
       },
       content: 'AWS認定ソリューションアーキテクトの資格を取得しました！クラウド技術の最新トレンドを学び、お客様により良いソリューションを提供できるようになります ☁️ #AWS #クラウド #資格取得',
@@ -85,9 +85,9 @@ export default function XFeed() {
     {
       id: '4',
       author: {
-        name: '須藤技術士',
-        handle: 'sudou_engineer',
-        avatar: '',
+        name: '須藤技術士事務所',
+        handle: 'sudo_engineer',
+        avatar: '👨‍💼',
         verified: true
       },
       content: 'プロジェクトマネジメントの重要性について、チームメンバーとディスカッションしました。アジャイル開発手法と従来のウォーターフォール手法の使い分けが、プロジェクト成功の鍵になります 📋 #プロジェクトマネジメント #アジャイル #チーム開発',
@@ -103,9 +103,9 @@ export default function XFeed() {
     {
       id: '5',
       author: {
-        name: '須藤技術士',
-        handle: 'sudou_engineer',
-        avatar: '',
+        name: '須藤技術士事務所',
+        handle: 'sudo_engineer',
+        avatar: '👨‍💼',
         verified: true
       },
       content: '技術士として、エンジニアのキャリア支援を行っています。若手エンジニアの成長をサポートし、日本のIT業界の発展に貢献したいと考えています 👨‍💼 #技術士 #キャリア支援 #エンジニア育成',
@@ -124,9 +124,9 @@ export default function XFeed() {
     const newPost: Post = {
       id: Date.now().toString(),
       author: {
-        name: '須藤技術士',
-        handle: 'sudou_engineer',
-        avatar: '',
+        name: '須藤技術士事務所',
+        handle: 'sudo_engineer',
+        avatar: '👨‍💼',
         verified: true
       },
       content,
