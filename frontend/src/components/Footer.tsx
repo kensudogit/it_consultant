@@ -75,7 +75,7 @@ export default function Footer() {
                 <span className="text-white text-2xl font-bold"></span>
               </motion.div>
               <div>
-                <h3 className="text-2xl font-bold">須藤技術士事務所</h3>
+                <h3 className="text-2xl font-bold text-red-500">須藤技術士事務所</h3>
                 <p className="text-blue-300 font-medium">情報工学部門</p>
               </div>
             </div>
@@ -230,10 +230,10 @@ export default function Footer() {
           viewport={{ once: true }}
         >
           <p className="text-gray-400 text-base">
-            © {currentYear} 須藤技術士事務所. All rights reserved.
+                            © {currentYear} <span className="text-red-500">須藤技術士事務所</span>. All rights reserved.
           </p>
           <p className="text-gray-500 text-sm mt-2">
-            技術士（情報工学部門）須藤技術士事務所
+                          技術士（情報工学部門）<span className="text-red-500">須藤技術士事務所</span>
           </p>
         </motion.div>
       </div>

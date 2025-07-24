@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
+import { Github } from 'lucide-react';
 import XCompose from './XCompose';
 import XPost from './XPost';
 
@@ -144,7 +145,7 @@ export default function XFeed() {
   };
 
   return (
-    <div className="bg-white">
+    <div className="bg-white max-h-[70vh] overflow-y-auto">
       {/* 投稿作成エリア */}
       <XCompose onPost={handleNewPost} />
 

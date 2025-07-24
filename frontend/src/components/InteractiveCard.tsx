@@ -73,7 +73,7 @@ export default function InteractiveCard({
 
       {/* 画像 */}
       {_image && (
-        <div className="relative h-48 overflow-hidden">
+        <div className="relative h-24 overflow-hidden">
           <motion.img
             src={_image}
             alt={title}

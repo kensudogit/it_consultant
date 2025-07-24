@@ -117,7 +117,7 @@ export default function Header() {
               </motion.div>
               <div className="hidden sm:block">
                 <h1 className="text-lg lg:text-xl font-bold text-gradient-animated">
-                  須藤技術士事務所
+                  <span className="text-red-500">須藤技術士事務所</span>
                 </h1>
                 <p className="text-xs lg:text-sm text-gradient-rainbow font-medium">
                   情報工学部門
@@ -168,7 +168,17 @@ export default function Header() {
                                     scrollToSection(subItem.href, subItem.name);
                                     setIsServicesOpen(false);
                                   }}
-                                  className="flex items-center space-x-4 w-full text-left px-4 py-4 text-gray-700 hover:text-white rounded-xl transition-all duration-300 group relative overflow-hidden"
+                                  className="flex items-center space-x-4 w-full text-left px-4 py-4 text-gray-700 hover:text-white rounded-xl transition-all duration-300 group relative overflow-hidden focus:outline-none"
+                                  onFocus={(e) => {
+                                    e.target.style.color = '#dc2626';
+                                    e.target.style.backgroundColor = '#fef2f2';
+                                    e.target.style.border = '2px solid #dc2626';
+                                  }}
+                                  onBlur={(e) => {
+                                    e.target.style.color = '#374151';
+                                    e.target.style.backgroundColor = 'transparent';
+                                    e.target.style.border = 'none';
+                                  }}
                                 >
                                   <motion.div
                                     className="absolute inset-0 bg-gradient-to-r from-blue-600 to-indigo-600 opacity-0 group-hover:opacity-100"
@@ -191,7 +201,17 @@ export default function Header() {
                           animate={{ opacity: 1, y: 0 }}
                           transition={{ duration: 0.6, delay: 0.3 + index * 0.1 }}
                           onClick={() => scrollToSection(item.href)}
-                          className="relative text-gray-700 hover:text-white font-medium transition-all duration-300 px-6 py-3 rounded-2xl hover:bg-gradient-to-r hover:from-blue-600 hover:to-indigo-600 group overflow-hidden"
+                          className="relative text-gray-700 hover:text-white font-medium transition-all duration-300 px-6 py-3 rounded-2xl hover:bg-gradient-to-r hover:from-blue-600 hover:to-indigo-600 focus:outline-none group overflow-hidden"
+                          onFocus={(e) => {
+                            e.target.style.color = '#dc2626';
+                            e.target.style.backgroundColor = '#fef2f2';
+                            e.target.style.border = '2px solid #dc2626';
+                          }}
+                          onBlur={(e) => {
+                            e.target.style.color = '#374151';
+                            e.target.style.backgroundColor = 'transparent';
+                            e.target.style.border = 'none';
+                          }}
                         >
                           <span className="relative z-10">{item.name}</span>
                           <motion.div
@@ -285,7 +305,17 @@ export default function Header() {
                               <div className="relative">
                                 <button 
                                   onClick={() => setIsMobileServicesOpen(!isMobileServicesOpen)}
-                                  className="flex items-center justify-between w-full text-left text-gray-700 hover:text-white font-medium py-4 px-6 rounded-2xl hover:bg-gradient-to-r hover:from-blue-600 hover:to-indigo-600 transition-all duration-300 group relative overflow-hidden"
+                                  className="flex items-center justify-between w-full text-left text-gray-700 hover:text-white font-medium py-4 px-6 rounded-2xl hover:bg-gradient-to-r hover:from-blue-600 hover:to-indigo-600 focus:outline-none transition-all duration-300 group relative overflow-hidden"
+                                  onFocus={(e) => {
+                                    e.target.style.color = '#dc2626';
+                                    e.target.style.backgroundColor = '#fef2f2';
+                                    e.target.style.border = '2px solid #dc2626';
+                                  }}
+                                  onBlur={(e) => {
+                                    e.target.style.color = '#374151';
+                                    e.target.style.backgroundColor = 'transparent';
+                                    e.target.style.border = 'none';
+                                  }}
                                 >
                                   <span className="relative z-10">{item.name}</span>
                                   <ChevronDown className={`w-4 h-4 relative z-10 transition-transform duration-200 ${isMobileServicesOpen ? 'rotate-180' : ''}`} />
@@ -318,7 +348,17 @@ export default function Header() {
                                               setIsMobileServicesOpen(false);
                                               setIsMobileMenuOpen(false);
                                             }}
-                                            className="flex items-center space-x-4 w-full text-left px-4 py-3 text-gray-700 hover:text-white rounded-xl transition-all duration-300 group relative overflow-hidden"
+                                            className="flex items-center space-x-4 w-full text-left px-4 py-3 text-gray-700 hover:text-white rounded-xl transition-all duration-300 group relative overflow-hidden focus:outline-none"
+                                            onFocus={(e) => {
+                                              e.target.style.color = '#dc2626';
+                                              e.target.style.backgroundColor = '#fef2f2';
+                                              e.target.style.border = '2px solid #dc2626';
+                                            }}
+                                            onBlur={(e) => {
+                                              e.target.style.color = '#374151';
+                                              e.target.style.backgroundColor = 'transparent';
+                                              e.target.style.border = 'none';
+                                            }}
                                           >
                                             <motion.div
                                               className="absolute inset-0 bg-gradient-to-r from-blue-600 to-indigo-600 opacity-0 group-hover:opacity-100"
@@ -338,7 +378,17 @@ export default function Header() {
                             ) : (
                               <button
                                 onClick={() => scrollToSection(item.href)}
-                                className="block w-full text-left text-gray-700 hover:text-white font-medium py-4 px-6 rounded-2xl hover:bg-gradient-to-r hover:from-blue-600 hover:to-indigo-600 transition-all duration-300 group relative overflow-hidden"
+                                className="block w-full text-left text-gray-700 hover:text-white font-medium py-4 px-6 rounded-2xl hover:bg-gradient-to-r hover:from-blue-600 hover:to-indigo-600 focus:outline-none transition-all duration-300 group relative overflow-hidden"
+                                onFocus={(e) => {
+                                  e.target.style.color = '#dc2626';
+                                  e.target.style.backgroundColor = '#fef2f2';
+                                  e.target.style.border = '2px solid #dc2626';
+                                }}
+                                onBlur={(e) => {
+                                  e.target.style.color = '#374151';
+                                  e.target.style.backgroundColor = 'transparent';
+                                  e.target.style.border = 'none';
+                                }}
                               >
                                 <span className="relative z-10">{item.name}</span>
                                 <motion.div

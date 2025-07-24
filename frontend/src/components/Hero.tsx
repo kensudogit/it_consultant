@@ -46,19 +46,19 @@ export default function Hero() {
       icon: <EngineerIcon className="w-7 h-7" />,
       title: '技術士資格',
       description: '情報工学部門の技術士として、高度な技術力と豊富な経験を提供',
-      color: 'blue'
+      colorClass: 'bg-gradient-to-br from-blue-500 to-blue-600'
     },
     {
       icon: <RocketIcon className="w-7 h-7" />,
       title: '迅速対応',
       description: 'お客様のニーズに迅速かつ柔軟に対応し、最適なソリューションを提案',
-      color: 'green'
+      colorClass: 'bg-gradient-to-br from-green-500 to-green-600'
     },
     {
       icon: <SupportIcon className="w-7 h-7" />,
       title: '継続サポート',
       description: 'システム導入後も継続的なサポートとメンテナンスで安心を提供',
-      color: 'purple'
+      colorClass: 'bg-gradient-to-br from-purple-500 to-purple-600'
     }
   ];
 
@@ -70,16 +70,16 @@ export default function Hero() {
   ];
 
   return (
-    <section id="home" className="relative min-h-screen flex items-center bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 overflow-hidden noise">
+    <section id="home" className="relative min-h-[40vh] flex items-center bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 overflow-hidden noise">
       {/* 高度な背景アニメーション */}
       <motion.div
-        className="absolute inset-0 opacity-15"
+        className="absolute inset-0 opacity-10"
         style={{ y, opacity }}
       >
-        <div className="absolute top-20 left-10 w-80 h-80 bg-gradient-to-br from-blue-400 to-purple-500 rounded-full mix-blend-multiply filter blur-2xl animate-float morph"></div>
-        <div className="absolute top-40 right-10 w-80 h-80 bg-gradient-to-br from-purple-400 to-pink-500 rounded-full mix-blend-multiply filter blur-2xl animate-float morph" style={{ animationDelay: '2s' }}></div>
-        <div className="absolute -bottom-8 left-20 w-80 h-80 bg-gradient-to-br from-pink-400 to-blue-500 rounded-full mix-blend-multiply filter blur-2xl animate-float morph" style={{ animationDelay: '4s' }}></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-gradient-to-br from-indigo-400 to-blue-500 rounded-full mix-blend-multiply filter blur-3xl animate-float" style={{ animationDelay: '1s' }}></div>
+        <div className="absolute top-20 left-10 w-40 h-40 bg-gradient-to-br from-blue-400 to-purple-500 rounded-full mix-blend-multiply filter blur-xl animate-float morph"></div>
+        <div className="absolute top-40 right-10 w-40 h-40 bg-gradient-to-br from-purple-400 to-pink-500 rounded-full mix-blend-multiply filter blur-xl animate-float morph" style={{ animationDelay: '2s' }}></div>
+        <div className="absolute -bottom-8 left-20 w-40 h-40 bg-gradient-to-br from-pink-400 to-blue-500 rounded-full mix-blend-multiply filter blur-xl animate-float morph" style={{ animationDelay: '4s' }}></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-48 h-48 bg-gradient-to-br from-indigo-400 to-blue-500 rounded-full mix-blend-multiply filter blur-2xl animate-float" style={{ animationDelay: '1s' }}></div>
       </motion.div>
 
       <div className="container-max section-padding relative z-10">
@@ -108,7 +108,7 @@ export default function Hero() {
                   </motion.div>
                   <div>
                     <h1 className="heading-gradient text-gradient-animated">
-                      須藤技術士事務所
+                      <span className="text-red-500">須藤技術士事務所</span>
                     </h1>
                     <p className="text-xl lg:text-2xl text-gradient-rainbow font-semibold mt-2">
                       情報工学部門
@@ -210,7 +210,7 @@ export default function Hero() {
                   >
                     <div className="flex items-start space-x-4">
                       <motion.div
-                        className={`w-12 h-12 bg-gradient-to-br from-${feature.color}-500 to-${feature.color}-600 rounded-xl flex items-center justify-center text-white shadow-lg`}
+                        className={`w-12 h-12 ${feature.colorClass} rounded-xl flex items-center justify-center text-white shadow-lg`}
                         whileHover={{ scale: 1.1, rotate: 5 }}
                       >
                         {feature.icon}

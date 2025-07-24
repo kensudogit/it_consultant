@@ -150,7 +150,7 @@ export default function Engineer() {
                 <div className="space-y-4">
                   <div className="border-l-4 border-primary-600 pl-4">
                     <div className="font-semibold text-gray-900">2020年 - 現在</div>
-                    <div className="text-primary-600 font-medium">須藤技術士事務所 代表</div>
+                    <div className="text-red-500 font-medium">須藤技術士事務所 代表</div>
                     <p className="text-gray-600 mt-1">
                       情報工学部門の技術士として独立。システム設計・開発・コンサルティングサービスを提供。
                     </p>

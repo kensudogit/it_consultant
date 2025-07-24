@@ -37,7 +37,7 @@ export default function About() {
   };
 
   const companyInfo = [
-    { label: '会社名', value: '須藤技術士事務所', icon: <Building className="w-5 h-5" /> },
+            { label: '会社名', value: '須藤技術士事務所', icon: <Building className="w-5 h-5" />, valueClassName: 'text-red-500' },
     { label: '代表者', value: '須藤 技術士（情報工学部門）', icon: <BusinessUserIcon className="w-5 h-5" /> },
     { label: '所在地', value: '〒150-0002\n東京都渋谷区渋谷2-1-1', icon: <MapPin className="w-5 h-5" /> },
     { label: '電話番号', value: '03-1234-5678', icon: <Phone className="w-5 h-5" /> },
@@ -209,7 +209,7 @@ export default function About() {
                         </div>
                         <div className="flex-1">
                           <dt className="font-semibold text-gray-900 mb-1">{info.label}</dt>
-                          <dd className="text-gray-600 whitespace-pre-line">{info.value}</dd>
+                          <dd className={`whitespace-pre-line ${info.valueClassName || 'text-gray-600'}`}>{info.value}</dd>
                         </div>
                       </motion.div>
                     ))}
@@ -237,7 +237,7 @@ export default function About() {
                         </div>
                         <div className="flex-1">
                           <dt className="font-semibold text-gray-900 mb-1">{info.label}</dt>
-                          <dd className="text-gray-600 whitespace-pre-line">{info.value}</dd>
+                          <dd className={`whitespace-pre-line ${info.valueClassName || 'text-gray-600'}`}>{info.value}</dd>
                         </div>
                       </motion.div>
                     ))}

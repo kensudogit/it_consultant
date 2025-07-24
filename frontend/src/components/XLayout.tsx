@@ -67,11 +67,11 @@ export default function XLayout({ children }: XLayoutProps) {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-[90vh] bg-gray-50">
       {/* 中央寄せコンテナ */}
       <div className="max-w-3xl mx-auto relative">
         {/* 左サイドバー */}
-        <div className="fixed left-1/2 transform -translate-x-full top-0 h-full w-64 bg-white border-r border-gray-200 z-40" style={{ left: 'calc(50% - 384px)' }}>
+        <div className="fixed top-0 h-full w-64 bg-white border-r border-gray-200 z-40" style={{ left: 'calc(50% - 384px)' }}>
         <div className="flex flex-col h-full">
           {/* ロゴ */}
           <div className="p-4 border-b border-gray-200">
@@ -79,7 +79,7 @@ export default function XLayout({ children }: XLayoutProps) {
               <div className={`w-8 h-8 ${commonStyles.gradientBg} rounded-lg flex items-center justify-center`}>
                 <span className={`${commonStyles.textWhite} font-bold text-sm`}></span>
               </div>
-              <span className={`font-bold text-xl ${commonStyles.textWhite}`}>須藤技術士事務所</span>
+                              <span className={`font-bold text-xl text-red-500`}>須藤技術士事務所</span>
             </div>
           </div>
 
@@ -111,29 +111,23 @@ export default function XLayout({ children }: XLayoutProps) {
 
           {/* プロフィール */}
           <div className="p-4 border-t border-gray-200">
-            <div 
-              className={`flex items-center space-x-3 p-3 rounded-xl ${commonStyles.hoverBg} cursor-pointer ${commonStyles.transition} focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50`}
-              tabIndex={0}
+            <button 
+              className={`flex items-center space-x-3 p-3 rounded-xl ${commonStyles.hoverBg} cursor-pointer ${commonStyles.transition} focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 w-full text-left`}
               onClick={() => {
                 // プロフィールクリック処理
                 console.log('プロフィール設定を開く');
               }}
-              onKeyDown={(e) => {
-                if (e.key === 'Enter' || e.key === ' ') {
-                  e.preventDefault();
-                  console.log('プロフィール設定を開く');
-                }
-              }}
+              aria-label="プロフィール設定を開く"
             >
               <div className={`w-10 h-10 ${commonStyles.gradientBg} rounded-full flex items-center justify-center`}>
                 <span className={`${commonStyles.textWhite} font-bold`}></span>
               </div>
               <div className="flex-1 min-w-0">
-                <p className={`font-semibold ${commonStyles.textWhite} truncate`}>須藤技術士事務所</p>
+                <p className={`font-semibold text-red-500 truncate`}>須藤技術士事務所</p>
                 <p className={`text-sm ${commonStyles.textGray300} truncate`}>@sudo_engineer</p>
               </div>
               <Settings className={`w-5 h-5 ${commonStyles.textGray300}`} />
-            </div>
+            </button>
           </div>
         </div>
       </div>
@@ -146,7 +140,7 @@ export default function XLayout({ children }: XLayoutProps) {
                 <h1 className="text-xl font-bold text-white">ホーム</h1>
               </div>
             </div>
-            <div className="bg-white">
+            <div className="bg-white max-h-[80vh] overflow-hidden">
               {children}
             </div>
           </div>
@@ -160,6 +154,7 @@ export default function XLayout({ children }: XLayoutProps) {
                 <input
                   type="text"
                   placeholder="検索..."
+                  aria-label="検索"
                   className="w-full pl-10 pr-4 py-3 bg-gray-100 rounded-full border-none focus:ring-2 focus:ring-blue-500 focus:bg-white transition-all cursor-text"
                   onKeyDown={(e) => {
                     if (e.key === 'Enter') {
@@ -199,6 +194,7 @@ export default function XLayout({ children }: XLayoutProps) {
                           console.log(`フォロー: ${user.name}`);
                         }}
                         className={`px-4 py-2 bg-gray-900 ${commonStyles.textWhite} rounded-full text-sm font-semibold hover:bg-gray-800 ${commonStyles.transition} cursor-pointer focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50`}
+                        aria-label={`${user.name}をフォロー`}
                       >
                         フォロー
                       </button>

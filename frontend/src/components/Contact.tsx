@@ -78,25 +78,25 @@ export default function Contact() {
       icon: <MapPin className="w-6 h-6" />,
       title: '所在地',
       content: '〒150-0002\n東京都渋谷区渋谷2-1-1',
-      color: 'blue'
+      colorClass: 'bg-gradient-to-br from-blue-500 to-blue-600'
     },
     {
       icon: <Phone className="w-6 h-6" />,
       title: '電話番号',
       content: '',
-      color: 'green'
+      colorClass: 'bg-gradient-to-br from-green-500 to-green-600'
     },
     {
       icon: <Mail className="w-6 h-6" />,
       title: 'メールアドレス',
               content: 'kensudo@kensudo.jp',
-      color: 'purple'
+      colorClass: 'bg-gradient-to-br from-purple-500 to-purple-600'
     },
     {
       icon: <DetailedClockIcon className="w-6 h-6" />,
       title: '営業時間',
       content: '平日 9:00-18:00\n土日祝日休み',
-      color: 'orange'
+      colorClass: 'bg-gradient-to-br from-orange-500 to-orange-600'
     }
   ];
 
@@ -156,7 +156,7 @@ export default function Contact() {
                     className="flex items-start space-x-4 group"
                   >
                     <motion.div
-                      className={`w-12 h-12 bg-gradient-to-br from-${info.color}-500 to-${info.color}-600 rounded-xl flex items-center justify-center text-white shadow-lg`}
+                      className={`w-12 h-12 ${info.colorClass} rounded-xl flex items-center justify-center text-white shadow-lg`}
                       whileHover={{ scale: 1.1, rotate: 5 }}
                     >
                       {info.icon}
