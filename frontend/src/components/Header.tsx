@@ -35,6 +35,7 @@ export default function Header() {
       ]
     },
     { name: '技術士紹介', href: '#engineer' },
+    { name: '技術ブログ', href: '#engineer' },
     { name: '会社概要', href: '#about' },
     { name: 'お問い合わせ', href: '#contact' },
   ];

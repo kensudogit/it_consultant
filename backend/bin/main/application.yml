@@ -1,0 +1,79 @@
+spring:
+  application:
+    name: kensudo-website
+  
+  # データベース設定
+  datasource:
+    url: jdbc:postgresql://localhost:5432/kensudo_db
+    username: kensudo_user
+    password: kensudo_password
+    driver-class-name: org.postgresql.Driver
+
+# Doma2設定
+doma:
+  # SQLファイルの場所
+  sql-file-repository:
+    path: classpath:META-INF/doma/sql
+  # データベース方言
+  dialect: org.seasar.doma.jdbc.dialect.PostgresDialect
+  # バッチサイズ
+  batch-size: 100
+  # フェッチサイズ
+  fetch-size: 100
+  # タイムアウト
+  query-timeout: 30
+  # バッチタイムアウト
+  batch-timeout: 30
+  
+  # メール設定
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: ${MAIL_USERNAME:}
+    password: ${MAIL_PASSWORD:}
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+  
+  # ファイルアップロード設定
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
+
+# サーバー設定
+server:
+  port: 8080
+  servlet:
+    context-path: /api
+
+# セキュリティ設定
+jwt:
+  secret: ${JWT_SECRET:kensudoSecretKey2024}
+  expiration: 86400000 # 24時間
+
+# ログ設定
+logging:
+  level:
+    jp.kensudo: DEBUG
+    org.springframework.security: DEBUG
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} - %msg%n"
+
+# CORS設定
+cors:
+  allowed-origins:
+    - http://localhost:3000
+    - https://kensudo.jp
+  allowed-methods:
+    - GET
+    - POST
+    - PUT
+    - DELETE
+    - OPTIONS
+  allowed-headers:
+    - "*"
+  allow-credentials: true 
